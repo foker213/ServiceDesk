@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  vite_app:
+    build:
+      context: ./Web/ui
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./web/ui:/app  # Монтируем папку с кодом
+      - /app/node_modules            # Изолируем node_modules
+    environment:
+      - CHOKIDAR_USEPOLLING=true     # Для отслеживания изменений в Docker
+      - NODE_ENV=development
+    restart: unless-stopped          # Перезапуск при ошибках

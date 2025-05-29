@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project>
+  <PropertyGroup>
+    <PackageJsonName Condition="$(PackageJsonName) == ''">service.desk</PackageJsonName>
+    <PackageJsonVersion Condition="$(PackageJsonVersion) == ''">0.0.1</PackageJsonVersion>
+    <PackageJsonDescription Condition="$(PackageJsonDescription) == ''"></PackageJsonDescription>
+    <PackageJsonScriptsDev Condition="$(PackageJsonScriptsDev) == ''">vite</PackageJsonScriptsDev>
+    <PackageJsonScriptsBuild Condition="$(PackageJsonScriptsBuild) == ''">vite build</PackageJsonScriptsBuild>
+    <PackageJsonScriptsPreview Condition="$(PackageJsonScriptsPreview) == ''">vite preview</PackageJsonScriptsPreview>
+    <PackageJsonScriptsLint Condition="$(PackageJsonScriptsLint) == ''">eslint --ext .js,.vue src</PackageJsonScriptsLint>
+    <PackageJsonDependenciesAxios Condition="$(PackageJsonDependenciesAxios) == ''">^0.21.1</PackageJsonDependenciesAxios>
+    <PackageJsonDependenciesCoreJs Condition="$(PackageJsonDependenciesCoreJs) == ''">^3.6.5</PackageJsonDependenciesCoreJs>
+    <PackageJsonDependenciesElementUi Condition="$(PackageJsonDependenciesElementUi) == ''">^2.13.2</PackageJsonDependenciesElementUi>
+    <PackageJsonDependenciesJsCookie Condition="$(PackageJsonDependenciesJsCookie) == ''">^2.2.0</PackageJsonDependenciesJsCookie>
+    <PackageJsonDependenciesNormalizeCss Condition="$(PackageJsonDependenciesNormalizeCss) == ''">^7.0.0</PackageJsonDependenciesNormalizeCss>
+    <PackageJsonDependenciesNprogress Condition="$(PackageJsonDependenciesNprogress) == ''">^0.2.0</PackageJsonDependenciesNprogress>
+    <PackageJsonDependenciesPathBrowserify Condition="$(PackageJsonDependenciesPathBrowserify) == ''">^1.0.1</PackageJsonDependenciesPathBrowserify>
+    <PackageJsonDependenciesPathToRegexp Condition="$(PackageJsonDependenciesPathToRegexp) == ''">^2.4.0</PackageJsonDependenciesPathToRegexp>
+    <PackageJsonDependenciesVue Condition="$(PackageJsonDependenciesVue) == ''">^2.6.10</PackageJsonDependenciesVue>
+    <PackageJsonDependenciesVueRouter Condition="$(PackageJsonDependenciesVueRouter) == ''">^3.0.6</PackageJsonDependenciesVueRouter>
+    <PackageJsonDependenciesVuex Condition="$(PackageJsonDependenciesVuex) == ''">^3.1.0</PackageJsonDependenciesVuex>
+    <PackageJsonDevdependenciesVueCompilerSfc Condition="$(PackageJsonDevdependenciesVueCompilerSfc) == ''">^3.2.26</PackageJsonDevdependenciesVueCompilerSfc>
+    <PackageJsonDevdependenciesAutoprefixer Condition="$(PackageJsonDevdependenciesAutoprefixer) == ''">^9.5.1</PackageJsonDevdependenciesAutoprefixer>
+    <PackageJsonDevdependenciesBabelEslint Condition="$(PackageJsonDevdependenciesBabelEslint) == ''">^10.1.0</PackageJsonDevdependenciesBabelEslint>
+    <PackageJsonDevdependenciesChalk Condition="$(PackageJsonDevdependenciesChalk) == ''">^2.4.2</PackageJsonDevdependenciesChalk>
+    <PackageJsonDevdependenciesEslint Condition="$(PackageJsonDevdependenciesEslint) == ''">^6.7.2</PackageJsonDevdependenciesEslint>
+    <PackageJsonDevdependenciesEslintPluginVue Condition="$(PackageJsonDevdependenciesEslintPluginVue) == ''">^6.2.2</PackageJsonDevdependenciesEslintPluginVue>
+    <PackageJsonDevdependenciesMockjs Condition="$(PackageJsonDevdependenciesMockjs) == ''">^1.0.1-beta3</PackageJsonDevdependenciesMockjs>
+    <PackageJsonDevdependenciesRunjs Condition="$(PackageJsonDevdependenciesRunjs) == ''">^4.3.2</PackageJsonDevdependenciesRunjs>
+    <PackageJsonDevdependenciesSass Condition="$(PackageJsonDevdependenciesSass) == ''">^1.26.8</PackageJsonDevdependenciesSass>
+    <PackageJsonDevdependenciesServeStatic Condition="$(PackageJsonDevdependenciesServeStatic) == ''">^1.13.2</PackageJsonDevdependenciesServeStatic>
+    <PackageJsonDevdependenciesSvgSpriteLoader Condition="$(PackageJsonDevdependenciesSvgSpriteLoader) == ''">^6.0.11</PackageJsonDevdependenciesSvgSpriteLoader>
+    <PackageJsonDevdependenciesVite Condition="$(PackageJsonDevdependenciesVite) == ''">^2.7.10</PackageJsonDevdependenciesVite>
+    <PackageJsonDevdependenciesVitePluginVue2 Condition="$(PackageJsonDevdependenciesVitePluginVue2) == ''">^1.9.2</PackageJsonDevdependenciesVitePluginVue2>
+    <PackageJsonDevdependenciesVueTemplateCompiler Condition="$(PackageJsonDevdependenciesVueTemplateCompiler) == ''">^2.6.10</PackageJsonDevdependenciesVueTemplateCompiler>
+    <PackageJsonBrowserslist Condition="$(PackageJsonBrowserslist) == ''">[
+  "\u003E 1%",
+  "last 2 versions"
+]</PackageJsonBrowserslist>
+    <PackageJsonEnginesNode Condition="$(PackageJsonEnginesNode) == ''">&gt;=8.9</PackageJsonEnginesNode>
+    <PackageJsonEnginesNpm Condition="$(PackageJsonEnginesNpm) == ''">&gt;= 3.0.0</PackageJsonEnginesNpm>
+    <PackageJsonLicense Condition="$(PackageJsonLicense) == ''">MIT</PackageJsonLicense>
+  </PropertyGroup>
+</Project>

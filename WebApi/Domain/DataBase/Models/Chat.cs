@@ -1,0 +1,15 @@
+﻿namespace Domain.DataBase.Models;
+
+public class Chat : Entity
+{
+    /// <summary>
+    /// Id пользователя из Telegram
+    /// </summary>
+    public ExternalUser? ExternalUser { get; set; } = default!;
+    public int ExternalUserId { get; set; }
+
+    /// <summary>
+    /// Прекрепленная заявка
+    /// </summary>
+    public Request? Request { get; set; }
+}
