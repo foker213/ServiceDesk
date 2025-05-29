@@ -1,4 +1,5 @@
-﻿using Application.Repository;
+﻿using Api.Models.Auth;
+using Application.Repository;
 using Domain.DataBase.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -77,5 +78,28 @@ public class AuthController(SignInManager<User> signInManager, IUserRepository u
         // TODO: Revoke token
         await signInManager.SignOutAsync();
         return Results.Ok();
+    }
+
+    [Authorize]
+    [HttpGet]
+    [Route("UserInfo")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+    public async Task<IResult> UserInfo()
+    {
+        var claimsPrincipal = signInManager.Context.User;
+        var userManager = signInManager.UserManager;
+        if (await userManager.GetUserAsync(claimsPrincipal) is not { } user)
+        {
+            return TypedResults.NotFound();
+        }
+
+        var userInfo = new UserInfo()
+        {
+            Name = user.Name!,
+            Role = "editor"
+        };
+
+        return TypedResults.Ok(userInfo);
     }
 }

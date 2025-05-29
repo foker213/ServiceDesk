@@ -9,7 +9,20 @@ builder.Services
     .AddApi()
     .AddInfrastructure(builder.Configuration);
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowFrontend", policy =>
+    {
+        policy.WithOrigins("http://localhost:3000")
+              .AllowAnyMethod()
+              .AllowAnyHeader()
+              .AllowCredentials();
+    });
+});
+
 var app = builder.Build();
+
+app.UseCors("AllowFrontend");
 
 using (var scope = app.Services.CreateScope())
 {
