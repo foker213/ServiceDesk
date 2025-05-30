@@ -13,14 +13,13 @@
         <el-dropdown-menu slot="dropdown" class="user-dropdown">
           <router-link to="/">
             <el-dropdown-item>
-              Home
+              Главная
             </el-dropdown-item>
           </router-link>
           <a target="_blank" href="https://github.com/maozilong/vite-admin">
-            <el-dropdown-item>Docs</el-dropdown-item>
           </a>
           <el-dropdown-item divided @click.native="logout">
-            <span style="display:block;">Log Out</span>
+            <span style="display:block;">Выход</span>
           </el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>

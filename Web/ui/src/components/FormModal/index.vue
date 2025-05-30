@@ -3,8 +3,8 @@
     <drag-dialog :title="title" :visible.sync="visible" :append-to-body="true">
       <m-form ref="form" v-bind="$props" title="" @submit="submit" />
       <div slot="footer" class="dialog-footer">
-        <el-button icon="el-icon-close" @click="visible = false">取 消</el-button>
-        <el-button :loading="$store.state.loading" type="primary" icon="el-icon-check" @click="save">保 存</el-button>
+        <el-button icon="el-icon-close" @click="visible = false">Отменить</el-button>
+        <el-button :loading="$store.state.loading" type="primary" icon="el-icon-check" @click="save">Сохранить</el-button>
       </div>
     </drag-dialog>
   </div>
@@ -49,7 +49,7 @@ export default {
   computed: {
     title() {
       const { index, $attrs } = this
-      return $attrs.title || (index === undefined ? '新增' : '编辑')
+      return $attrs.title || (index === undefined ? 'Добавить' : 'Редактировать')
     }
   },
   watch: {

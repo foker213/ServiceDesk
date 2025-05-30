@@ -6,8 +6,8 @@
     <drag-dialog :title="opt_config.title" :visible.sync="opt_config.visible">
       <Page ref="opt_page" :config="opt_config" @save="saveRow" />
       <div slot="footer" class="dialog-footer">
-        <el-button @click="opt_config.visible = false">取 消</el-button>
-        <el-button type="primary" icon="el-icon-check" @click="save">保 存</el-button>
+        <el-button @click="opt_config.visible = false">Отменить</el-button>
+        <el-button type="primary" icon="el-icon-check" @click="save">Сохранить</el-button>
       </div>
     </drag-dialog>
   </div>

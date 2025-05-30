@@ -46,55 +46,31 @@ export const constantRoutes = [
   {
     path: '/',
     component: Layout,
-    redirect: '/dashboard',
-    children: [{
-      path: 'dashboard',
-      name: 'Dashboard',
-      component: () => import('@/views/form/index'),
-      meta: { title: '表单', icon: 'form' }
-    }]
+    redirect: '/lists/users'
   },
 
   {
-    path: '/example',
+    path: '/lists',
     component: Layout,
-    redirect: '/example/table',
-    name: 'Example',
-    meta: { title: '示例', icon: 'el-icon-s-help' },
+    redirect: '/lists/users',
+    name: 'Lists',
+    meta: { title: 'Списки', icon: 'el-icon-s-help' },
     children: [
       {
-        path: 'table',
-        name: 'Table',
+        path: 'users',
+        name: 'Users',
         component: () => import('@/views/table/index'),
-        meta: { title: '文章', icon: 'table' }
+        meta: { title: 'Пользователи', icon: 'table' }
       },
       {
-        path: 'cate',
-        name: 'Cate',
+        path: 'applications',
+        name: 'Applications',
         component: () => import('@/views/cate/index'),
-        meta: { title: '分类', icon: 'table' }
-      },
-      {
-        path: 'dict',
-        name: 'Dict',
-        component: () => import('@/views/dict/index'),
-        meta: { title: '字典', icon: 'table' }
+        meta: { title: 'Заявки', icon: 'table' }
       }
     ]
   },
 
-  // {
-  //   path: 'external-link',
-  //   component: Layout,
-  //   children: [
-  //     {
-  //       path: 'https://panjiachen.github.io/vue-element-admin-site/#/',
-  //       meta: { title: 'External Link', icon: 'link' }
-  //     }
-  //   ]
-  // },
-
-  // 404 page must be placed at the end !!!
   { path: '*', redirect: '/404', hidden: true }
 ]
 

@@ -2,23 +2,34 @@ import request from '@/utils/request'
 
 export function login(data) {
   return request({
-    url: '/vue-admin-simple/user/login',
+    url: 'http://localhost:5186/Auth/Login',
     method: 'post',
-    data
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    data: new URLSearchParams({
+      username: data.username.trim(),
+      password: data.password
+    }).toString()
   })
 }
 
 export function getInfo(token) {
   return request({
-    url: '/vue-admin-simple/user/info',
+    url: 'http://localhost:5186/Auth/UserInfo',
     method: 'get',
-    params: { token }
+    headers: {
+      'Authorization': `Bearer ${token}`
+    }
   })
 }
 
-export function logout() {
+export function logout(token) {
   return request({
-    url: '/vue-admin-simple/user/logout',
-    method: 'post'
+    url: 'http://localhost:5186/Auth/Logout',
+    method: 'post',
+    headers: {
+      'Authorization': `Bearer ${token}`
+    }
   })
 }

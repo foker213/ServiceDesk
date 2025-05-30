@@ -21,100 +21,95 @@ export default {
       return statusMap[status]
     }
   },
-  data() {
+    data() {
+
     return {
       config: {
         columns: [
           { label: 'ID', prop: 'id' },
-          { label: '名称', prop: 'title', type: 'input',
+          {
+            label: 'Имя', prop: 'username', type: 'input',
             // value: '默认值',
             rules: { required: true },
             attr: {
-              placeholder: '请输入一个吸引人的标题'
+              placeholder: 'ФИО пользователя'
             },
-            input: (val, form) => {
-              // console.log('input:', val, form)
-              form.setFields({ author: { attr: { disabled: !val }}})
-            },
-            // 搜索条件的属性，默认去掉rules、function
             search: {
               attr: {
-                placeholder: '名称搜索试试'
+                placeholder: 'ФИО пользователя'
               }
             }
           },
-          { label: '作者', prop: 'author', type: 'input' },
-          { label: '分类', prop: 'cate_id', propName: 'cate_name', type: 'select',
-            request: {
-              url: '/vue-admin-simple/cate/list',
-              params: { enabled: '1', limit: 999 },
-              transformResponse: (res) => {
-                res.data.records = res.data.records.map(o => {
-                  return { value: o.id, label: o.name }
-                })
-                return res
-              }
-            },
+          {
+            label: 'Телефон', prop: 'number_phone', type: 'input',
             attr: {
-              multiple: true
-              // props: { value: 'id', label: 'name' }
+              placeholder: 'Номер телефона с +7'
+            },
+            search: {
+              attr: {
+                placeholder: 'Номер телефона с +7'
+              }
             }
           },
-          { label: '状态', prop: 'status', type: 'select', dictionary: 'article_status', slotScope: 'status' },
-          { label: '日期', prop: 'display_time', type: 'date-picker', attr: { valueFormat: 'yyyy-MM-dd' },
-            search: { attr: { type: 'daterange', valueFormat: 'yyyy-MM-dd' }}
+          {
+            label: 'Email', prop: 'email', type: 'input',
+            // value: '默认值',
+            rules: { required: true },
+            attr: {
+              placeholder: 'Адрес эл. почты'
+            },
+            search: {
+              attr: {
+                placeholder: 'Адрес эл. почты'
+              }
+            }
           },
-          { label: '头像', prop: 'img', type: 'upload', attr: { limit: 1 }},
-          { label: '详情', prop: 'remark', type: 'input', span: 24, width: 300, attr: { type: 'textarea', rows: '5' }}
+          {
+            label: 'Логин', prop: 'login', type: 'input',
+            rules: { required: true },
+            attr: {
+              placeholder: 'Введите логин'
+            },
+            search: {
+              attr: {
+                placeholder: 'Введите логин'
+              }
+            }
+          },
+          {
+            label: 'Пароль', prop: 'password', type: 'input',
+            rules: { required: true },
+            attr: {
+              type: 'password',
+              placeholder: 'Введите пароль'
+            },
+            search: {
+              attr: {
+                placeholder: 'Введите пароль'
+              }
+            }
+          },
+          {
+            label: 'Роль', prop: 'role', type: 'select', rules: { required: true }, options: this.$dictionaries.user_role
+          },
+          { label: 'Блок', prop: 'block', type: 'switch'},
         ],
         operation: {
           buttons: [
             {
-              label: '新增', type: 'primary',
+              label: 'Добавить', type: 'primary',
               click: () => {
                 this.open()
               }
             },
             {
-              label: '删除', type: 'default',
+              label: 'Удалить', type: 'default',
               click: () => {
                 this.del()
               },
               disabledRender: (rows) => {
                 return !(rows.length && rows.every(o => o.status !== '1'))
               }
-            }
-          ],
-          addButtons: [
-            {
-              label: '操作...', type: 'default',
-              children: [
-                {
-                  label: '导入导出', type: 'default',
-                  children: [
-                    {
-                      label: '导入', type: 'default', icon: 'el-icon-upload',
-                      click: row => {
-                        // todo
-                        console.log('import...')
-                      },
-                      disabledRender: (rows) => {
-                        return !(rows.length)
-                      }
-                    },
-                    {
-                      label: '导出', type: 'default', icon: 'el-icon-download',
-                      click: row => {
-                        // todo
-                        console.log('export...')
-                      },
-                      disabledRender: (rows) => {
-                        return !(rows.length)
-                      }
-                    }
-                  ]
-                }
-              ]
             }
           ]
         },
@@ -125,10 +120,10 @@ export default {
           url: '/vue-admin-simple/article/list',
           url_del: '/vue-admin-simple/article/del',
           actionColumn: {
-            label: '操作', fixed: 'right', width: 150,
+            label: 'Действия', fixed: 'right', width: 150,
             buttons: [
               {
-                label: '修改',
+                label: 'Редактировать',
                 type: 'text',
                 auth: 'edit',
                 click: row => {
@@ -136,7 +131,7 @@ export default {
                 }
               },
               {
-                label: '删除',
+                label: 'Удалить',
                 type: 'text',
                 auth: 'del',
                 act: 'del',
@@ -154,7 +149,7 @@ export default {
   },
   methods: {
     save(data) {
-      this.$http.post('/vue-admin-simple/article/save', data).then(() => {
+      this.$store.dispatch('form/registr', data).then(() => {
         this.$refs.page.$refs.form.visible = false
         this.$refs.page.$refs.table.refresh()
       })
