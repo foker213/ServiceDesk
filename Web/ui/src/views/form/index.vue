@@ -35,6 +35,7 @@ export default {
           },
           { type: 'checkbox', label: '多选框', prop: 'checkbox', dictionary: 'yes_no' },
           { type: 'select', label: '状态', prop: 'status', dictionary: 'article_status', slotScope: 'status' },
+          { type: 'select', label: '状态', prop: 'role', dictionary: 'user_role'},
           { type: 'select', label: '分类', prop: 'cate_id', propName: 'cate_name',
             request: {
               url: '/vue-admin-simple/cate/list',

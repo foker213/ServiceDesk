@@ -1,4 +1,4 @@
-﻿using Api.Models.Auth;
+﻿using Api.Models;
 using Application.Repository;
 using Domain.DataBase.Models;
 using Microsoft.AspNetCore.Authorization;
@@ -97,7 +97,7 @@ public class AuthController(SignInManager<User> signInManager, IUserRepository u
         var userInfo = new UserInfo()
         {
             Name = user.Name!,
-            Role = "editor"
+            Role = "admin"
         };
 
         return TypedResults.Ok(userInfo);

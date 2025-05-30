@@ -86,7 +86,7 @@ export default {
         // 这里可以默认一些东西
         const attr = {}
         if (!o.attr) o.attr = {}
-        attr.placeholder = (o.type === 'input' ? '请输入' : '请选择') + o.label
+        attr.placeholder = (o.type === 'input' ? 'Введите ' : 'Выберите ') + o.label
         if (o.type === 'date-picker') {
           attr.valueFormat = 'yyyy-MM-dd'
         }

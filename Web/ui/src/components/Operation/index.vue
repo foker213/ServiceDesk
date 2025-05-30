@@ -7,9 +7,8 @@
             <m-form ref="searchForm" v-bind="$props" :columns="less" @submit="submit" />
           </el-col>
           <el-col :span="5" :offset="1">
-            <el-button @click="submit()">查询</el-button>
-            <el-button @click="resetForm()">重置</el-button>
-            <el-button v-if="more.length>0" type="text" @click="drawer=true">展开 <i class="el-icon-arrow-down" /></el-button>
+            <el-button @click="submit()">Применить</el-button>
+            <el-button @click="resetForm()">Сбросить</el-button>
           </el-col>
         </el-row>
       </el-col>
@@ -57,13 +56,13 @@ export default {
       default() {
         return [
           {
-            label: '新增', type: 'primary',
+            label: 'Добавить', type: 'primary',
             click: () => {
               this.open()
             }
           },
           {
-            label: '删除', type: 'default',
+            label: 'Удалить', type: 'default',
             click: () => {
               this.del()
             },
