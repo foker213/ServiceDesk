@@ -1,6 +1,7 @@
 ﻿using Application.Repository;
 using Domain.DataBase;
 using Infrastructure.DataBase;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 
@@ -36,16 +37,50 @@ public abstract class Repository<T> : IRepository<T> where T : class, IEntity
             return query;
         }
 
+        var fieldName = sort.Trim('-').ToLower();
+        var parameter = Expression.Parameter(typeof(T));
+        MemberExpression property;
+
+        if (fieldName.Contains('.'))
+        {
+            // find nested property
+            var propertyPath = fieldName.Split('.');
+            property = Expression.Property(parameter, propertyPath[0]);
+            foreach (var member in propertyPath.Skip(1))
+                property = Expression.Property(property, member);
+        }
+        else
+        {
+            property = Expression.Property(parameter, fieldName);
+        }
+
+        var propAsObject = Expression.Convert(property, typeof(object));
+        var expression = Expression.Lambda<Func<T, object>>(propAsObject, parameter);
+
+        if (sort.StartsWith('-'))
+            query = query.OrderByDescending(expression);
+        else
+            query = query.OrderBy(expression);
+
         return query;
     }
 
+    public async Task<int> Count()
+    {
+        var query = GetQuery(noTracking: true);
+        return await query.CountAsync();
+    }
 
-    public async Task<T?> GetById(int id, bool noTracking = false)
+    public async Task<List<T>> GetAll(int limit = 10, int offset = 0, string? sort = null, bool noTracking = false)
+    {
+        var query = GetQuery(sort, noTracking);  
+        return await query.Skip(offset).Take(limit).ToListAsync();
+    }
+
+    public async Task<T?> GetBy(int id, bool noTracking = false)
     {
         var query = GetQuery(noTracking: noTracking);
-        return await query
-            .Where(e => e.Id == id)
-            .FirstOrDefaultAsync();
+        return await query.Where(x => x.Id == id).FirstOrDefaultAsync();
     }
 
     public virtual async Task Create(T entity)
@@ -58,16 +93,13 @@ public abstract class Repository<T> : IRepository<T> where T : class, IEntity
     public virtual async Task Update(T entity)
     {
         entity.UpdatedAt = _timeProvider.GetUtcNow().UtcDateTime;
-
-        // оптимизировать, чтобы обновлять только одно поле
-
         DbSet.Update(entity);
         await _db.SaveChangesAsync();
     }
 
     public async Task Delete(int id)
     {
-        var entity = await GetById(id); // обработать если ошибка
+        var entity = await GetBy(id) ?? throw new ArgumentNullException(nameof(id));
         DbSet.Remove(entity);
         await _db.SaveChangesAsync();
     }

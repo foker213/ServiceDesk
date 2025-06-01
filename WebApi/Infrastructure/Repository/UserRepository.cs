@@ -16,35 +16,20 @@ internal sealed class UserRepository(
     public async Task<User?> GetByLogin(string login)
     {
         var query = GetQuery();
-        return await query
-            .Where(e => e.UserName == login)
-            .FirstOrDefaultAsync();
+        return await query.Where(x => x.UserName == login).FirstOrDefaultAsync();
     }
 
     public async Task<User?> GetByEmail(string email)
     {
         var query = GetQuery();
-        return await query
-            .Where(e => e.Email == email)
-            .FirstOrDefaultAsync();
+        return await query.Where(x => x.Email == email).FirstOrDefaultAsync();
     }
 
     public async Task<User?> GetByLoginOrEmail(string login, string email)
     {
         var query = GetQuery();
-        return await query
-            .Where(e => e.UserName == login || e.Email == email)
+        return await query.Where(x => x.UserName == login || x.Email == email)
             .FirstOrDefaultAsync();
-    }
-
-    public override async Task Create(User user)
-    {
-        var emailStore = (IUserEmailStore<User>)userStore;
-        await userStore.SetUserNameAsync(user, user.UserName, CancellationToken.None);
-        await emailStore.SetEmailAsync(user, user.Email, CancellationToken.None);
-        user.CreatedAt = _timeProvider.GetUtcNow().UtcDateTime;
-
-        await userManager.CreateAsync(user);
     }
 
     public async Task Create(User user, string password)
@@ -60,13 +45,5 @@ internal sealed class UserRepository(
 
         var error = result.Errors.FirstOrDefault();
         throw new Exception(error?.Description);
-    }
-
-    public override async Task Update(User user)
-    {
-        var emailStore = (IUserEmailStore<User>)userStore;
-        await userStore.SetUserNameAsync(user, user.UserName, CancellationToken.None);
-        await emailStore.SetEmailAsync(user, user.Email, CancellationToken.None);
-        await base.Update(user);
     }
 }

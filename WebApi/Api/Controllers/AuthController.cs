@@ -1,4 +1,5 @@
 ﻿using Api.Models;
+using Api.Models.Auth;
 using Application.Repository;
 using Domain.DataBase.Models;
 using Microsoft.AspNetCore.Authorization;

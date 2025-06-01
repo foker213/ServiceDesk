@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Mapster;
+using MapsterMapper;
+using Microsoft.AspNetCore.Identity;
+using System.Reflection;
 
 namespace Api;
 
@@ -10,7 +13,14 @@ public static class DependencyInjection
 
         services.AddControllers();
 
+        //Configuration Mapster
+        var typeAdapterConfig = TypeAdapterConfig.GlobalSettings;
+        typeAdapterConfig.Scan(Assembly.GetExecutingAssembly());
 
+        services.AddSingleton(typeAdapterConfig);
+        services.AddScoped<IMapper, ServiceMapper>();
+
+        //Configuration Identity
         services.Configure<IdentityOptions>(options =>
         {
             options.Password.RequiredLength = 8;
