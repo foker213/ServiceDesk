@@ -9,11 +9,44 @@
       "Api/1.0.0": {
         "dependencies": {
           "Infrastructure": "1.0.0",
+          "Mapster": "7.4.0",
+          "Mapster.DependencyInjection": "1.0.1",
           "Microsoft.AspNetCore.OpenApi": "8.0.1",
           "Swashbuckle.AspNetCore": "6.4.0"
         },
         "runtime": {
           "Api.dll": {}
+        }
+      },
+      "Mapster/7.4.0": {
+        "dependencies": {
+          "Mapster.Core": "1.2.1"
+        },
+        "runtime": {
+          "lib/net7.0/Mapster.dll": {
+            "assemblyVersion": "7.4.0.0",
+            "fileVersion": "7.4.0.0"
+          }
+        }
+      },
+      "Mapster.Core/1.2.1": {
+        "runtime": {
+          "lib/net7.0/Mapster.Core.dll": {
+            "assemblyVersion": "1.2.1.0",
+            "fileVersion": "1.2.1.0"
+          }
+        }
+      },
+      "Mapster.DependencyInjection/1.0.1": {
+        "dependencies": {
+          "Mapster": "7.4.0",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.5"
+        },
+        "runtime": {
+          "lib/net7.0/Mapster.DependencyInjection.dll": {
+            "assemblyVersion": "1.0.1.0",
+            "fileVersion": "1.0.1.0"
+          }
         }
       },
       "Microsoft.AspNetCore.Cryptography.Internal/9.0.5": {
@@ -672,17 +705,6 @@
           }
         }
       },
-      "Application/1.0.0": {
-        "dependencies": {
-          "Domain": "1.0.0"
-        },
-        "runtime": {
-          "Application.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.0.0.0"
-          }
-        }
-      },
       "Domain/1.0.0": {
         "dependencies": {
           "Microsoft.Extensions.Identity.Stores": "9.0.5"
@@ -696,7 +718,7 @@
       },
       "Infrastructure/1.0.0": {
         "dependencies": {
-          "Application": "1.0.0",
+          "Domain": "1.0.0",
           "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": "8.0.16",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "8.0.16",
           "Microsoft.Extensions.Configuration": "9.0.5",
@@ -719,6 +741,27 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "Mapster/7.4.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-RYGoDqvS4WTKIq0HDyPBBVIj6N0mluOCXQ1Vk95JKseMHEsbCXSEGKSlP95oL+s42IXAXbqvHj7p0YaRBUcfqg==",
+      "path": "mapster/7.4.0",
+      "hashPath": "mapster.7.4.0.nupkg.sha512"
+    },
+    "Mapster.Core/1.2.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-11lokmfliBEMMmjeqxFGNpqGXq6tN96zFqpBmfYeahr4Ybk63oDmeJmOflsATjobYkX248g5Y62oQ2NNnZaeww==",
+      "path": "mapster.core/1.2.1",
+      "hashPath": "mapster.core.1.2.1.nupkg.sha512"
+    },
+    "Mapster.DependencyInjection/1.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-LfjnRIwx6WAo3ssq8PFeaHFaUz00BfSG9BhWgXsiDa3H5lDhG0lpMGDF6w2ZnooS4eHYmAv4f77VxmzpvgorNg==",
+      "path": "mapster.dependencyinjection/1.0.1",
+      "hashPath": "mapster.dependencyinjection.1.0.1.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Cryptography.Internal/9.0.5": {
       "type": "package",
@@ -1104,11 +1147,6 @@
       "sha512": "sha512-24ufyg6PXKMvRGz2yOEz78sCeMmNBanHejaJmikr0bN2Ct2u9J4Qz8gNPvuj2+2FNJb+gcHz4Qy6ChWE93pFdQ==",
       "path": "telegram.bot/22.5.1",
       "hashPath": "telegram.bot.22.5.1.nupkg.sha512"
-    },
-    "Application/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
     },
     "Domain/1.0.0": {
       "type": "project",

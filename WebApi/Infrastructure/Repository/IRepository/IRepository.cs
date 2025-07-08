@@ -1,6 +1,6 @@
 ﻿using Domain.DataBase;
 
-namespace Application.Repository;
+namespace Infrastructure.Repository.IRepository;
 
 public interface IRepository<T> where T : class, IEntity
 {

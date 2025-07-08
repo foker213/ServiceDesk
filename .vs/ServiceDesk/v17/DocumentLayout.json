@@ -1,0 +1,368 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\thoug\\source\\repos\\ServiceDesk\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{1B1B92D3-5B84-944C-A070-8961F43676D8}|Web\\UI\\ui.esproj|c:\\users\\thoug\\source\\repos\\servicedesk\\web\\ui\\src\\router\\index.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{1B1B92D3-5B84-944C-A070-8961F43676D8}|Web\\UI\\ui.esproj|solutionrelative:web\\ui\\src\\router\\index.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1B1B92D3-5B84-944C-A070-8961F43676D8}|Web\\UI\\ui.esproj|c:\\users\\thoug\\source\\repos\\servicedesk\\web\\ui\\src\\locales\\ru.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{1B1B92D3-5B84-944C-A070-8961F43676D8}|Web\\UI\\ui.esproj|solutionrelative:web\\ui\\src\\locales\\ru.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1B1B92D3-5B84-944C-A070-8961F43676D8}|Web\\UI\\ui.esproj|c:\\users\\thoug\\source\\repos\\servicedesk\\web\\ui\\mock\\role\\index.mock.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{1B1B92D3-5B84-944C-A070-8961F43676D8}|Web\\UI\\ui.esproj|solutionrelative:web\\ui\\mock\\role\\index.mock.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1B1B92D3-5B84-944C-A070-8961F43676D8}|Web\\UI\\ui.esproj|c:\\users\\thoug\\source\\repos\\servicedesk\\web\\ui\\src\\locales\\en.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{1B1B92D3-5B84-944C-A070-8961F43676D8}|Web\\UI\\ui.esproj|solutionrelative:web\\ui\\src\\locales\\en.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1B1B92D3-5B84-944C-A070-8961F43676D8}|Web\\UI\\ui.esproj|c:\\users\\thoug\\source\\repos\\servicedesk\\web\\ui\\src\\utils\\routerhelper.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{1B1B92D3-5B84-944C-A070-8961F43676D8}|Web\\UI\\ui.esproj|solutionrelative:web\\ui\\src\\utils\\routerhelper.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1B1B92D3-5B84-944C-A070-8961F43676D8}|Web\\UI\\ui.esproj|c:\\users\\thoug\\source\\repos\\servicedesk\\web\\ui\\src\\views\\catalog\\myapplications\\myapplications.vue||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1B1B92D3-5B84-944C-A070-8961F43676D8}|Web\\UI\\ui.esproj|solutionrelative:web\\ui\\src\\views\\catalog\\myapplications\\myapplications.vue||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1B1B92D3-5B84-944C-A070-8961F43676D8}|Web\\UI\\ui.esproj|c:\\users\\thoug\\source\\repos\\servicedesk\\web\\ui\\src\\api\\users\\index.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{1B1B92D3-5B84-944C-A070-8961F43676D8}|Web\\UI\\ui.esproj|solutionrelative:web\\ui\\src\\api\\users\\index.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1B1B92D3-5B84-944C-A070-8961F43676D8}|Web\\UI\\ui.esproj|c:\\users\\thoug\\source\\repos\\servicedesk\\web\\ui\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1B1B92D3-5B84-944C-A070-8961F43676D8}|Web\\UI\\ui.esproj|solutionrelative:web\\ui\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{198B3B17-0C5E-4519-8D80-0ED51294268F}|WebApi\\Api\\Api.csproj|c:\\users\\thoug\\source\\repos\\servicedesk\\webapi\\api\\models\\user\\userreadmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{198B3B17-0C5E-4519-8D80-0ED51294268F}|WebApi\\Api\\Api.csproj|solutionrelative:webapi\\api\\models\\user\\userreadmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1B1B92D3-5B84-944C-A070-8961F43676D8}|Web\\UI\\ui.esproj|c:\\users\\thoug\\source\\repos\\servicedesk\\web\\ui\\src\\api\\users\\types.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{1B1B92D3-5B84-944C-A070-8961F43676D8}|Web\\UI\\ui.esproj|solutionrelative:web\\ui\\src\\api\\users\\types.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{198B3B17-0C5E-4519-8D80-0ED51294268F}|WebApi\\Api\\Api.csproj|c:\\users\\thoug\\source\\repos\\servicedesk\\webapi\\api\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{198B3B17-0C5E-4519-8D80-0ED51294268F}|WebApi\\Api\\Api.csproj|solutionrelative:webapi\\api\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{198B3B17-0C5E-4519-8D80-0ED51294268F}|WebApi\\Api\\Api.csproj|c:\\users\\thoug\\source\\repos\\servicedesk\\webapi\\api\\mappingregister.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{198B3B17-0C5E-4519-8D80-0ED51294268F}|WebApi\\Api\\Api.csproj|solutionrelative:webapi\\api\\mappingregister.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{198B3B17-0C5E-4519-8D80-0ED51294268F}|WebApi\\Api\\Api.csproj|c:\\users\\thoug\\source\\repos\\servicedesk\\webapi\\api\\models\\user\\userchangemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{198B3B17-0C5E-4519-8D80-0ED51294268F}|WebApi\\Api\\Api.csproj|solutionrelative:webapi\\api\\models\\user\\userchangemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1B1B92D3-5B84-944C-A070-8961F43676D8}|Web\\UI\\ui.esproj|c:\\users\\thoug\\source\\repos\\servicedesk\\web\\ui\\src\\api\\login\\index.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{1B1B92D3-5B84-944C-A070-8961F43676D8}|Web\\UI\\ui.esproj|solutionrelative:web\\ui\\src\\api\\login\\index.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1B1B92D3-5B84-944C-A070-8961F43676D8}|Web\\UI\\ui.esproj|c:\\users\\thoug\\source\\repos\\servicedesk\\web\\ui\\src\\views\\manage\\users\\users.vue||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1B1B92D3-5B84-944C-A070-8961F43676D8}|Web\\UI\\ui.esproj|solutionrelative:web\\ui\\src\\views\\manage\\users\\users.vue||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1B1B92D3-5B84-944C-A070-8961F43676D8}|Web\\UI\\ui.esproj|c:\\users\\thoug\\source\\repos\\servicedesk\\web\\ui\\src\\views\\personal\\personalcenter\\personalcenter.vue||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1B1B92D3-5B84-944C-A070-8961F43676D8}|Web\\UI\\ui.esproj|solutionrelative:web\\ui\\src\\views\\personal\\personalcenter\\personalcenter.vue||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1B1B92D3-5B84-944C-A070-8961F43676D8}|Web\\UI\\ui.esproj|c:\\users\\thoug\\source\\repos\\servicedesk\\web\\ui\\package.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{1B1B92D3-5B84-944C-A070-8961F43676D8}|Web\\UI\\ui.esproj|solutionrelative:web\\ui\\package.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1B1B92D3-5B84-944C-A070-8961F43676D8}|Web\\UI\\ui.esproj|c:\\users\\thoug\\source\\repos\\servicedesk\\web\\ui\\src\\components\\entityselect\\src\\entityselect.vue||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1B1B92D3-5B84-944C-A070-8961F43676D8}|Web\\UI\\ui.esproj|solutionrelative:web\\ui\\src\\components\\entityselect\\src\\entityselect.vue||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1B1B92D3-5B84-944C-A070-8961F43676D8}|Web\\UI\\ui.esproj|c:\\users\\thoug\\source\\repos\\servicedesk\\web\\ui\\src\\components\\form\\src\\helper\\componentmap.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{1B1B92D3-5B84-944C-A070-8961F43676D8}|Web\\UI\\ui.esproj|solutionrelative:web\\ui\\src\\components\\form\\src\\helper\\componentmap.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1B1B92D3-5B84-944C-A070-8961F43676D8}|Web\\UI\\ui.esproj|c:\\users\\thoug\\source\\repos\\servicedesk\\web\\ui\\src\\components\\form\\src\\form.vue||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1B1B92D3-5B84-944C-A070-8961F43676D8}|Web\\UI\\ui.esproj|solutionrelative:web\\ui\\src\\components\\form\\src\\form.vue||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1B1B92D3-5B84-944C-A070-8961F43676D8}|Web\\UI\\ui.esproj|c:\\users\\thoug\\source\\repos\\servicedesk\\web\\ui\\src\\components\\form\\src\\types\\index.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{1B1B92D3-5B84-944C-A070-8961F43676D8}|Web\\UI\\ui.esproj|solutionrelative:web\\ui\\src\\components\\form\\src\\types\\index.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 5,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "index.ts",
+              "DocumentMoniker": "C:\\Users\\thoug\\source\\repos\\ServiceDesk\\Web\\ui\\src\\api\\users\\index.ts",
+              "RelativeDocumentMoniker": "Web\\ui\\src\\api\\users\\index.ts",
+              "ToolTip": "C:\\Users\\thoug\\source\\repos\\ServiceDesk\\Web\\ui\\src\\api\\users\\index.ts",
+              "RelativeToolTip": "Web\\ui\\src\\api\\users\\index.ts",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAACkAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2025-06-03T12:16:18.16Z",
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "UsersController.cs",
+              "DocumentMoniker": "C:\\Users\\thoug\\source\\repos\\ServiceDesk\\WebApi\\Api\\Controllers\\UsersController.cs",
+              "RelativeDocumentMoniker": "WebApi\\Api\\Controllers\\UsersController.cs",
+              "ToolTip": "C:\\Users\\thoug\\source\\repos\\ServiceDesk\\WebApi\\Api\\Controllers\\UsersController.cs",
+              "RelativeToolTip": "WebApi\\Api\\Controllers\\UsersController.cs",
+              "ViewState": "AgIAAG4AAAAAAAAAAAApwIAAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-03T12:17:37.065Z",
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ru.ts",
+              "DocumentMoniker": "C:\\Users\\thoug\\source\\repos\\ServiceDesk\\Web\\ui\\src\\locales\\ru.ts",
+              "RelativeDocumentMoniker": "Web\\ui\\src\\locales\\ru.ts",
+              "ToolTip": "C:\\Users\\thoug\\source\\repos\\ServiceDesk\\Web\\ui\\src\\locales\\ru.ts",
+              "RelativeToolTip": "Web\\ui\\src\\locales\\ru.ts",
+              "ViewState": "AgIAAGwAAAAAAAAAAAApwIgAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2025-06-20T16:20:57.988Z",
+              "IsPinned": true
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:130:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:131:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "index.ts",
+              "DocumentMoniker": "C:\\Users\\thoug\\source\\repos\\ServiceDesk\\Web\\ui\\src\\router\\index.ts",
+              "RelativeDocumentMoniker": "Web\\ui\\src\\router\\index.ts",
+              "ToolTip": "C:\\Users\\thoug\\source\\repos\\ServiceDesk\\Web\\ui\\src\\router\\index.ts",
+              "RelativeToolTip": "Web\\ui\\src\\router\\index.ts",
+              "ViewState": "AgIAAGcAAAAAAAAAAAAQwHgAAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2025-06-20T16:43:49.184Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "routerHelper.ts",
+              "DocumentMoniker": "C:\\Users\\thoug\\source\\repos\\ServiceDesk\\Web\\ui\\src\\utils\\routerHelper.ts",
+              "RelativeDocumentMoniker": "Web\\ui\\src\\utils\\routerHelper.ts",
+              "ToolTip": "C:\\Users\\thoug\\source\\repos\\ServiceDesk\\Web\\ui\\src\\utils\\routerHelper.ts",
+              "RelativeToolTip": "Web\\ui\\src\\utils\\routerHelper.ts",
+              "ViewState": "AgIAAFEAAAAAAAAAAAAAAGYAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2025-06-20T16:55:08.956Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "MyApplications.vue",
+              "DocumentMoniker": "C:\\Users\\thoug\\source\\repos\\ServiceDesk\\Web\\ui\\src\\views\\Catalog\\MyApplications\\MyApplications.vue",
+              "RelativeDocumentMoniker": "Web\\ui\\src\\views\\Catalog\\MyApplications\\MyApplications.vue",
+              "ToolTip": "C:\\Users\\thoug\\source\\repos\\ServiceDesk\\Web\\ui\\src\\views\\Catalog\\MyApplications\\MyApplications.vue",
+              "RelativeToolTip": "Web\\ui\\src\\views\\Catalog\\MyApplications\\MyApplications.vue",
+              "ViewState": "AgIAANcAAAAAAAAAAAAcwOwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003491|",
+              "WhenOpened": "2025-06-20T16:42:40.312Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "index.mock.ts",
+              "DocumentMoniker": "C:\\Users\\thoug\\source\\repos\\ServiceDesk\\Web\\ui\\mock\\role\\index.mock.ts",
+              "RelativeDocumentMoniker": "Web\\ui\\mock\\role\\index.mock.ts",
+              "ToolTip": "C:\\Users\\thoug\\source\\repos\\ServiceDesk\\Web\\ui\\mock\\role\\index.mock.ts",
+              "RelativeToolTip": "Web\\ui\\mock\\role\\index.mock.ts",
+              "ViewState": "AgIAABwAAAAAAAAAAAAQwDMAAAA8AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2025-06-20T16:37:58.771Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "en.ts",
+              "DocumentMoniker": "C:\\Users\\thoug\\source\\repos\\ServiceDesk\\Web\\ui\\src\\locales\\en.ts",
+              "RelativeDocumentMoniker": "Web\\ui\\src\\locales\\en.ts",
+              "ToolTip": "C:\\Users\\thoug\\source\\repos\\ServiceDesk\\Web\\ui\\src\\locales\\en.ts",
+              "RelativeToolTip": "Web\\ui\\src\\locales\\en.ts",
+              "ViewState": "AgIAAG0AAAAAAAAAAAAAwIMAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2025-06-20T16:35:35.131Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "index.html",
+              "DocumentMoniker": "C:\\Users\\thoug\\source\\repos\\ServiceDesk\\Web\\ui\\index.html",
+              "RelativeDocumentMoniker": "Web\\ui\\index.html",
+              "ToolTip": "C:\\Users\\thoug\\source\\repos\\ServiceDesk\\Web\\ui\\index.html",
+              "RelativeToolTip": "Web\\ui\\index.html",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2025-06-03T15:50:06.407Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "UserReadModel.cs",
+              "DocumentMoniker": "C:\\Users\\thoug\\source\\repos\\ServiceDesk\\WebApi\\Api\\Models\\User\\UserReadModel.cs",
+              "RelativeDocumentMoniker": "WebApi\\Api\\Models\\User\\UserReadModel.cs",
+              "ToolTip": "C:\\Users\\thoug\\source\\repos\\ServiceDesk\\WebApi\\Api\\Models\\User\\UserReadModel.cs",
+              "RelativeToolTip": "WebApi\\Api\\Models\\User\\UserReadModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-03T13:04:33.866Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "types.ts",
+              "DocumentMoniker": "C:\\Users\\thoug\\source\\repos\\ServiceDesk\\Web\\ui\\src\\api\\users\\types.ts",
+              "RelativeDocumentMoniker": "Web\\ui\\src\\api\\users\\types.ts",
+              "ToolTip": "C:\\Users\\thoug\\source\\repos\\ServiceDesk\\Web\\ui\\src\\api\\users\\types.ts",
+              "RelativeToolTip": "Web\\ui\\src\\api\\users\\types.ts",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2025-06-03T13:07:04.04Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "UserChangeModel.cs",
+              "DocumentMoniker": "C:\\Users\\thoug\\source\\repos\\ServiceDesk\\WebApi\\Api\\Models\\User\\UserChangeModel.cs",
+              "RelativeDocumentMoniker": "WebApi\\Api\\Models\\User\\UserChangeModel.cs",
+              "ToolTip": "C:\\Users\\thoug\\source\\repos\\ServiceDesk\\WebApi\\Api\\Models\\User\\UserChangeModel.cs",
+              "RelativeToolTip": "WebApi\\Api\\Models\\User\\UserChangeModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-03T12:40:58.131Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "MappingRegister.cs",
+              "DocumentMoniker": "C:\\Users\\thoug\\source\\repos\\ServiceDesk\\WebApi\\Api\\MappingRegister.cs",
+              "RelativeDocumentMoniker": "WebApi\\Api\\MappingRegister.cs",
+              "ToolTip": "C:\\Users\\thoug\\source\\repos\\ServiceDesk\\WebApi\\Api\\MappingRegister.cs",
+              "RelativeToolTip": "WebApi\\Api\\MappingRegister.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-03T12:39:25.503Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Users.vue",
+              "DocumentMoniker": "C:\\Users\\thoug\\source\\repos\\ServiceDesk\\Web\\ui\\src\\views\\Manage\\Users\\Users.vue",
+              "RelativeDocumentMoniker": "Web\\ui\\src\\views\\Manage\\Users\\Users.vue",
+              "ToolTip": "C:\\Users\\thoug\\source\\repos\\ServiceDesk\\Web\\ui\\src\\views\\Manage\\Users\\Users.vue",
+              "RelativeToolTip": "Web\\ui\\src\\views\\Manage\\Users\\Users.vue",
+              "ViewState": "AgIAAFMBAAAAAAAAAAAAAFkBAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003491|",
+              "WhenOpened": "2025-06-03T12:13:57.499Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "PersonalCenter.vue",
+              "DocumentMoniker": "C:\\Users\\thoug\\source\\repos\\ServiceDesk\\Web\\ui\\src\\views\\Personal\\PersonalCenter\\PersonalCenter.vue",
+              "RelativeDocumentMoniker": "Web\\ui\\src\\views\\Personal\\PersonalCenter\\PersonalCenter.vue",
+              "ToolTip": "C:\\Users\\thoug\\source\\repos\\ServiceDesk\\Web\\ui\\src\\views\\Personal\\PersonalCenter\\PersonalCenter.vue",
+              "RelativeToolTip": "Web\\ui\\src\\views\\Personal\\PersonalCenter\\PersonalCenter.vue",
+              "ViewState": "AgIAAD8AAAAAAAAAAAAAAE8AAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003491|",
+              "WhenOpened": "2025-06-03T12:09:23.696Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "index.ts",
+              "DocumentMoniker": "C:\\Users\\thoug\\source\\repos\\ServiceDesk\\Web\\ui\\src\\api\\login\\index.ts",
+              "RelativeDocumentMoniker": "Web\\ui\\src\\api\\login\\index.ts",
+              "ToolTip": "C:\\Users\\thoug\\source\\repos\\ServiceDesk\\Web\\ui\\src\\api\\login\\index.ts",
+              "RelativeToolTip": "Web\\ui\\src\\api\\login\\index.ts",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2025-06-02T15:59:17.083Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "package.json",
+              "DocumentMoniker": "C:\\Users\\thoug\\source\\repos\\ServiceDesk\\Web\\ui\\package.json",
+              "RelativeDocumentMoniker": "Web\\ui\\package.json",
+              "ToolTip": "C:\\Users\\thoug\\source\\repos\\ServiceDesk\\Web\\ui\\package.json",
+              "RelativeToolTip": "Web\\ui\\package.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACIAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-06-02T15:58:47.641Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "componentMap.ts",
+              "DocumentMoniker": "C:\\Users\\thoug\\source\\repos\\ServiceDesk\\Web\\ui\\src\\components\\Form\\src\\helper\\componentMap.ts",
+              "RelativeDocumentMoniker": "Web\\ui\\src\\components\\Form\\src\\helper\\componentMap.ts",
+              "ToolTip": "C:\\Users\\thoug\\source\\repos\\ServiceDesk\\Web\\ui\\src\\components\\Form\\src\\helper\\componentMap.ts",
+              "RelativeToolTip": "Web\\ui\\src\\components\\Form\\src\\helper\\componentMap.ts",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAkwBEAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2025-06-02T15:51:07.15Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "EntitySelect.vue",
+              "DocumentMoniker": "C:\\Users\\thoug\\source\\repos\\ServiceDesk\\Web\\ui\\src\\components\\EntitySelect\\src\\EntitySelect.vue",
+              "RelativeDocumentMoniker": "Web\\ui\\src\\components\\EntitySelect\\src\\EntitySelect.vue",
+              "ToolTip": "C:\\Users\\thoug\\source\\repos\\ServiceDesk\\Web\\ui\\src\\components\\EntitySelect\\src\\EntitySelect.vue",
+              "RelativeToolTip": "Web\\ui\\src\\components\\EntitySelect\\src\\EntitySelect.vue",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003491|",
+              "WhenOpened": "2025-06-02T15:47:55.988Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "index.ts",
+              "DocumentMoniker": "C:\\Users\\thoug\\source\\repos\\ServiceDesk\\Web\\ui\\src\\components\\Form\\src\\types\\index.ts",
+              "RelativeDocumentMoniker": "Web\\ui\\src\\components\\Form\\src\\types\\index.ts",
+              "ToolTip": "C:\\Users\\thoug\\source\\repos\\ServiceDesk\\Web\\ui\\src\\components\\Form\\src\\types\\index.ts",
+              "RelativeToolTip": "Web\\ui\\src\\components\\Form\\src\\types\\index.ts",
+              "ViewState": "AgIAACIAAAAAAAAAAIA0wCoAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2025-06-02T15:45:27.749Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "Form.vue",
+              "DocumentMoniker": "C:\\Users\\thoug\\source\\repos\\ServiceDesk\\Web\\ui\\src\\components\\Form\\src\\Form.vue",
+              "RelativeDocumentMoniker": "Web\\ui\\src\\components\\Form\\src\\Form.vue",
+              "ToolTip": "C:\\Users\\thoug\\source\\repos\\ServiceDesk\\Web\\ui\\src\\components\\Form\\src\\Form.vue",
+              "RelativeToolTip": "Web\\ui\\src\\components\\Form\\src\\Form.vue",
+              "ViewState": "AgIAACMBAAAAAAAAAAAAACoBAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003491|",
+              "WhenOpened": "2025-06-02T15:44:37.924Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

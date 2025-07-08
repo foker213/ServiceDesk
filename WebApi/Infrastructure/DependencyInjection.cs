@@ -7,8 +7,8 @@ using Infrastructure.TelegramBot.Commands;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Telegram.Bot;
-using Application.Repository;
 using Infrastructure.Repository;
+using Infrastructure.Repository.IRepository;
 
 namespace Infrastructure;
 
@@ -36,6 +36,11 @@ public static class DependencyInjection
         services.AddSingleton<IBotCommandHandlerFactory, BotCommandHandlerFactory>();
 
         services.AddScoped<IUserRepository, UserRepository>();
+        services.AddScoped<IChatRepository, ChatRepository>();
+        services.AddScoped<IRequestRepository, ChatLineRepository>();
+        services.AddScoped<IRequestRepository, RequestRepository>();
+        services.AddScoped<IExternalUserRepository, ExternalRepository>();
+        services.AddScoped<ICurrentUserService, CurrentUserService>();
 
         services.AddHostedService(provider =>
         {

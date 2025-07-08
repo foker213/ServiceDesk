@@ -1,7 +1,6 @@
-﻿using Application.Repository;
-using Domain.DataBase;
+﻿using Domain.DataBase;
 using Infrastructure.DataBase;
-using Microsoft.AspNetCore.Http.HttpResults;
+using Infrastructure.Repository.IRepository;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 

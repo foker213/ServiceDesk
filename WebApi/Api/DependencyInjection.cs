@@ -32,11 +32,14 @@ public static class DependencyInjection
 
         services.ConfigureApplicationCookie(options =>
         {
+            options.Cookie.SameSite = SameSiteMode.None;
+            options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
             options.Cookie.HttpOnly = true;
             options.ExpireTimeSpan = TimeSpan.FromDays(30);
-            options.LoginPath = "/Account/Login";
-            options.LogoutPath = "/Account/Logout";
+            options.LoginPath = "/Auth/Login";
+            options.LogoutPath = "/Auth/Logout";
             options.SlidingExpiration = true;
+            options.Cookie.Domain = "localhost";
         });
         return services;
     }

@@ -1,18 +1,9 @@
+node_modules
 .DS_Store
-node_modules/
-dist/
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-package-lock.json
-tests/**/coverage/
-
-# Editor directories and files
+dist
+dist-ssr
+*.local
+/dist*
+pnpm-debug
+stats.html
 .idea
-.vscode
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-.pnpm-debug.log
-pnpm-lock.yaml

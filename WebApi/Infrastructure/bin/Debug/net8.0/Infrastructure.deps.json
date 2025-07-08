@@ -8,7 +8,7 @@
     ".NETCoreApp,Version=v8.0": {
       "Infrastructure/1.0.0": {
         "dependencies": {
-          "Application": "1.0.0",
+          "Domain": "1.0.0",
           "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": "8.0.16",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "8.0.16",
           "Microsoft.EntityFrameworkCore.Design": "8.0.16",
@@ -976,17 +976,6 @@
           }
         }
       },
-      "Application/1.0.0": {
-        "dependencies": {
-          "Domain": "1.0.0"
-        },
-        "runtime": {
-          "Application.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.0.0.0"
-          }
-        }
-      },
       "Domain/1.0.0": {
         "dependencies": {
           "Microsoft.Extensions.Identity.Stores": "9.0.5"
@@ -1495,11 +1484,6 @@
       "sha512": "sha512-24ufyg6PXKMvRGz2yOEz78sCeMmNBanHejaJmikr0bN2Ct2u9J4Qz8gNPvuj2+2FNJb+gcHz4Qy6ChWE93pFdQ==",
       "path": "telegram.bot/22.5.1",
       "hashPath": "telegram.bot.22.5.1.nupkg.sha512"
-    },
-    "Application/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
     },
     "Domain/1.0.0": {
       "type": "project",
