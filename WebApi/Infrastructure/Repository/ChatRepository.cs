@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ServiceDesk.Domain.Database.Models;
+using ServiceDesk.Infrastructure.Database;
+using ServiceDesk.Application.IRepository;
 
-namespace Infrastructure.Repository
+namespace ServiceDesk.Infrastructure.Repository;
+
+internal sealed class ChatRepository(
+    ServiceDeskDbContext db,
+    TimeProvider tp
+) : Repository<Chat>(db, tp), IChatRepository
 {
-    internal class ChatRepository
-    {
-    }
+
 }

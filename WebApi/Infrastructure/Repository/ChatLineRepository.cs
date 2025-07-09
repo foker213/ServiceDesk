@@ -1,13 +1,13 @@
-﻿using Domain.DataBase.Models;
-using Infrastructure.DataBase;
-using Infrastructure.Repository.IRepository;
+﻿using ServiceDesk.Domain.Database.Models;
+using ServiceDesk.Infrastructure.Database;
+using ServiceDesk.Application.IRepository;
 
-namespace Infrastructure.Repository;
+namespace ServiceDesk.Infrastructure.Repository;
 
-internal class ChatLineRepository(
+internal sealed class ChatLineRepository(
     ServiceDeskDbContext db,
     TimeProvider tp
-) : Repository<ChatLine>(db, tp), IRequestRepository
+) : Repository<ChatLine>(db, tp), IChatLineRepository
 {
 
 }

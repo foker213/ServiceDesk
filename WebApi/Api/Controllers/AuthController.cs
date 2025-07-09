@@ -1,13 +1,12 @@
-﻿using Api.Models;
-using Api.Models.Auth;
-using Application.Repository;
-using Domain.DataBase.Models;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using ServiceDesk.Application.IRepository;
+using ServiceDesk.Domain.Database.Models;
+using ServiceDeskServiceDesk.Contracts.Auth;
 using System.Net.Mime;
 
-namespace Api.Controllers;
+namespace ServiceDesk.Api.Controllers;
 
 [ApiController]
 [Route("[controller]")]

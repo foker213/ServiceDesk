@@ -1,8 +1,8 @@
-﻿using Domain.DataBase.Models;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using ServiceDesk.Domain.Database.Models;
 
-namespace Infrastructure.DataBase;
+namespace ServiceDesk.Infrastructure.Database;
 
 public class ServiceDeskDbContext(DbContextOptions<ServiceDeskDbContext> options)
     : IdentityDbContext<User, UserRole, int>(options)

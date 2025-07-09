@@ -1,10 +1,10 @@
-﻿using Domain.DataBase;
-using Infrastructure.DataBase;
-using Infrastructure.Repository.IRepository;
+﻿using ServiceDesk.Domain.Database;
+using ServiceDesk.Infrastructure.Database;
+using ServiceDesk.Application.IRepository;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 
-namespace Infrastructure.Repository;
+namespace ServiceDesk.Infrastructure.Repository;
 
 public abstract class Repository<T> : IRepository<T> where T : class, IEntity
 {

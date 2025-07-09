@@ -1,10 +1,10 @@
-﻿using Application.Repository;
-using Domain.DataBase.Models;
-using Infrastructure.DataBase;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using ServiceDesk.Domain.Database.Models;
+using ServiceDesk.Infrastructure.Database;
+using ServiceDesk.Application.IRepository;
 
-namespace Infrastructure.Repository;
+namespace ServiceDesk.Infrastructure.Repository;
 
 internal sealed class UserRepository(
     UserManager<User> userManager,

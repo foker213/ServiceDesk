@@ -1,14 +1,13 @@
-﻿using Domain.DataBase.Models;
-using Infrastructure.DataBase;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Infrastructure.TelegramBot;
-using Infrastructure.TelegramBot.Commands;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Telegram.Bot;
-using Infrastructure.Repository;
-using Infrastructure.Repository.IRepository;
+using ServiceDesk.Domain.Database.Models;
+using ServiceDesk.Infrastructure.Database;
+using ServiceDesk.Infrastructure.Repository;
+using ServiceDesk.Application.IRepository;
+using ServiceDesk.Infrastructure;
+using ServiceDesk.Application.IServices;
 
 namespace Infrastructure;
 
@@ -16,7 +15,6 @@ public static class DependencyInjection
 {
     public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
-        //Регистрация DbContext
         services.AddDbContext<ServiceDeskDbContext>(options =>
             options.UseNpgsql(configuration["DbContext:ConnectionString"]));
 
@@ -24,31 +22,14 @@ public static class DependencyInjection
             .AddEntityFrameworkStores<ServiceDeskDbContext>()
             .AddDefaultTokenProviders();
 
-        services.AddSingleton<ITelegramBotClient>(_ =>
-            new TelegramBotClient(configuration["TelegramBot:Token"]!));
-
-        services.AddScoped<BotUpdateHandler>();
-        services.AddScoped<HelpCommandHandler>();
-
-        services.AddTransient<IBotCommandHandler, StartCommandHandler>();
-        services.AddTransient<IBotCommandHandler, HelpCommandHandler>();
-
-        services.AddSingleton<IBotCommandHandlerFactory, BotCommandHandlerFactory>();
-
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<IChatRepository, ChatRepository>();
-        services.AddScoped<IRequestRepository, ChatLineRepository>();
+        services.AddScoped<IChatLineRepository, ChatLineRepository>();
         services.AddScoped<IRequestRepository, RequestRepository>();
         services.AddScoped<IExternalUserRepository, ExternalRepository>();
-        services.AddScoped<ICurrentUserService, CurrentUserService>();
 
-        services.AddHostedService(provider =>
-        {
-            using var scope = provider.CreateScope();
-            var updateHandler = scope.ServiceProvider.GetRequiredService<BotUpdateHandler>();
-            var botClient = provider.GetRequiredService<ITelegramBotClient>();
-            return new BotBackgroundService(botClient, updateHandler);
-        });
+        services.AddHttpContextAccessor();
+        services.AddScoped<ICurrentUserService, CurrentUserService>();
 
         return services;
     }

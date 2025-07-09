@@ -3,7 +3,7 @@ using MapsterMapper;
 using Microsoft.AspNetCore.Identity;
 using System.Reflection;
 
-namespace Api;
+namespace ServiceDesk.Api;
 
 public static class DependencyInjection
 {

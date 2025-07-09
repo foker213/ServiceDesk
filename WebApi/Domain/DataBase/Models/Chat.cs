@@ -1,4 +1,4 @@
-﻿namespace Domain.DataBase.Models;
+﻿namespace ServiceDesk.Domain.Database.Models;
 
 public class Chat : Entity
 {

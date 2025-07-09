@@ -1,13 +1,13 @@
-﻿using Api.Models;
-using Api.Models.User;
-using Application.Repository;
-using Domain.DataBase.Models;
-using Mapster;
+﻿using Mapster;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using ServiceDesk.Application.IRepository;
+using ServiceDesk.Contracts;
+using ServiceDesk.Contracts.User;
+using ServiceDesk.Domain.Database.Models;
 using System.Net.Mime;
 
-namespace Api.Controllers;
+namespace ServiceDesk.Api.Controllers;
 
 [Authorize]
 [ApiController]

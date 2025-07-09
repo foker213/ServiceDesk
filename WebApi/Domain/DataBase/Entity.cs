@@ -1,4 +1,4 @@
-﻿namespace Domain.DataBase;
+﻿namespace ServiceDesk.Domain.Database;
 
 public class Entity : IEntity
 {

@@ -1,9 +1,9 @@
-﻿using Domain.DataBase.Models;
-using Infrastructure.DataBase;
-using Infrastructure.Repository.IRepository;
+﻿using ServiceDesk.Domain.Database.Models;
+using ServiceDesk.Infrastructure.Database;
+using ServiceDesk.Application.IRepository;
 using Microsoft.EntityFrameworkCore;
 
-namespace Infrastructure.Repository;
+namespace ServiceDesk.Infrastructure.Repository;
 
 internal sealed class ExternalRepository(
     ServiceDeskDbContext db,

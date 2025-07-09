@@ -1,6 +1,4 @@
-﻿using Domain.DataBase.Enums;
-
-namespace Domain.DataBase.Models;
+﻿namespace ServiceDesk.Domain.Database.Models;
 
 public class Request : Entity
 {

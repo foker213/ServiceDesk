@@ -1,8 +1,8 @@
-﻿using Api.Models.User;
-using Domain.DataBase.Models;
-using Mapster;
+﻿using Mapster;
+using ServiceDesk.Contracts.User;
+using ServiceDesk.Domain.Database.Models;
 
-namespace Api;
+namespace ServiceDesk.Api;
 
 public class MappingRegister : IRegister
 {

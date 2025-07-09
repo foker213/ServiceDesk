@@ -4,7 +4,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
-namespace Infrastructure.DataBase.Migrations
+namespace ServiceDesk.Infrastructure.Database.Migrations
 {
     /// <inheritdoc />
     public partial class ServiceDeskModelSnapshot : Migration

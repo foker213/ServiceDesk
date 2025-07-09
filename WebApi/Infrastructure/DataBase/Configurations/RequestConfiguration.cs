@@ -1,8 +1,8 @@
-﻿using Domain.DataBase.Models;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using ServiceDesk.Domain.Database.Models;
 
-namespace Infrastructure.DataBase.Configurations;
+namespace ServiceDesk.Infrastructure.Database.Configurations;
 
 internal sealed class RequestConfiguration : IEntityTypeConfiguration<Request>
 {

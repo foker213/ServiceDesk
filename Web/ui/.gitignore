@@ -7,3 +7,9 @@ dist-ssr
 pnpm-debug
 stats.html
 .idea
+.temp/
+.cache/
+.env
+.env.local
+.env.*.local
+.vs/

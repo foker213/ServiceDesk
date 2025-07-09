@@ -1,12 +1,16 @@
-using Api;
-using Domain.DataBase.Models;
 using Infrastructure;
-using Infrastructure.DataBase;
+using ServiceDesk.Api;
+using ServiceDesk.Application;
+using ServiceDesk.Domain.Database.Models;
+using ServiceDesk.Infrastructure.Database;
+using ServiceDesk.TelegramBot;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services
     .AddApi()
+    .AddApplication()
+    .AddTelegramBot(builder.Configuration)
     .AddInfrastructure(builder.Configuration);
 
 builder.Services.AddCors(options =>

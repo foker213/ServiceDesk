@@ -1,0 +1,16 @@
+obj
+bin
+debug
+release
+*.suo
+*.user
+elmah
+*.sdf
+*.pubxml
+.vs
+*.bak
+
+node_modules
+dist
+internal_logs
+logs

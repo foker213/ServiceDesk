@@ -1,10 +1,11 @@
-﻿using Domain.DataBase.Enums;
-using Domain.DataBase.Models;
-using Infrastructure.DataBase;
-using Infrastructure.Repository.IRepository;
+﻿using ServiceDesk.Domain.Database.Models;
+using ServiceDesk.Infrastructure.Database;
+using ServiceDesk.Application.IRepository;
 using Microsoft.EntityFrameworkCore;
+using ServiceDesk.Domain.Database;
+using ServiceDesk.Application.IServices;
 
-namespace Infrastructure.Repository;
+namespace ServiceDesk.Infrastructure.Repository;
 
 internal sealed class RequestRepository(
     ServiceDeskDbContext db,
@@ -12,23 +13,19 @@ internal sealed class RequestRepository(
     ICurrentUserService userService
 ) : Repository<Request>(db, tp), IRequestRepository
 {
-    public async Task<List<Request>> GetAll(int limit = 10, int offset = 0, string? sort, string dictionaryType)
+    public async Task<List<Request>> GetAll(int limit = 10, int offset = 0, string? sort = null, string dictionaryType = "")
     {
-        var query = GetQueryFactory(dictionaryType)(sort);
+        int userId = userService.UserId;
+        var query = GetQueryFactory(dictionaryType, userId)(sort);
         return await query.Skip(offset).Take(limit).ToListAsync();
     }
 
-    public Task Update(int id, Request request)
-    {
-
-    }
-
-    private Func<string?, IQueryable<Request>> GetQueryFactory(string dictionaryType)
+    private Func<string?, IQueryable<Request>> GetQueryFactory(string dictionaryType, int userId)
     {
         return dictionaryType switch
         {
             "archive" => GetArchiveQuery,
-            "myRequests" => GetMyRequestsQuery,
+            "myRequests" => sort => GetMyRequestsQuery(sort, userId),
             "unclaimedRequests" => GetUnclaimedRequestsQuery,
             _ => throw new ArgumentException($"Unknown dictionary type: {dictionaryType}")
         };
@@ -40,10 +37,10 @@ internal sealed class RequestRepository(
         return query.Where(x => x.Status == Status.Solved);
     }
 
-    private IQueryable<Request> GetMyRequestsQuery(string? sort, )
+    private IQueryable<Request> GetMyRequestsQuery(string? sort, int userId)
     {
         var query = GetQuery(sort);
-        return query.Where(x => x.UserId == );
+        return query.Where(x => x.UserId == userId);
     }
 
     private IQueryable<Request> GetUnclaimedRequestsQuery(string? sort)

@@ -1,10 +1,9 @@
-﻿using Api.Models.Request;
-using Api.Models.User;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using ServiceDesk.Contracts.Request;
 using System.Net.Mime;
 
-namespace Api.Controllers;
+namespace ServiceDesk.Api.Controllers;
 
 [Authorize]
 [ApiController]
@@ -21,7 +20,7 @@ public class RequestController : ControllerBase
         [FromQuery] string dictionaryType
     )
     {
-
+        return Ok(new());
     }
 
     [HttpGet]
@@ -29,9 +28,9 @@ public class RequestController : ControllerBase
     [Produces(MediaTypeNames.Application.Json)]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public async Task<ActionResult<UserReadModel>> GetBy(int id)
+    public async Task<ActionResult<RequestReadModel>> GetBy(int id)
     {
-
+        return Ok(new());
     }
 
     [HttpPut]
@@ -40,9 +39,9 @@ public class RequestController : ControllerBase
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public async Task<ActionResult> Update(int id, RequestUpdateModel request)
+    public async Task<ActionResult> Update(RequestUpdateModel request)
     {
-        
+        return Ok(new());
     }
 
     [HttpDelete]
@@ -51,6 +50,6 @@ public class RequestController : ControllerBase
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<ActionResult> Delete(int id)
     {
-
+        return Ok(new());
     }
 }
