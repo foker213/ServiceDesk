@@ -2,6 +2,8 @@
 using Microsoft.Extensions.DependencyInjection;
 using ServiceDesk.Infrastructure.TelegramBot;
 using ServiceDesk.TelegramBot.Commands;
+using ServiceDesk.TelegramBot.Commands.ICommand;
+using ServiceDesk.TelegramBot.Factory;
 using Telegram.Bot;
 
 namespace ServiceDesk.TelegramBot;
@@ -14,10 +16,19 @@ public static class DependencyInjection
             new TelegramBotClient(configuration["TelegramBot:Token"]!));
 
         services.AddScoped<BotUpdateHandler>();
-        services.AddScoped<HelpCommandHandler>();
+        services.AddTransient<StartCommandHandler>();
+        services.AddTransient<UnknownCommandHandler>();
 
         services.AddTransient<IBotCommandHandler, StartCommandHandler>();
         services.AddTransient<IBotCommandHandler, HelpCommandHandler>();
+        services.AddTransient<IBotCommandHandler, ContactCommandHandler>();
+        services.AddTransient<IBotCommandHandler, AlreadyRegisteredCommandHandler>();
+        services.AddTransient<IBotCommandHandler, PhoneInputCommandHandler>();
+        services.AddTransient<IBotCommandHandler, EmailInputCommandHandler>();
+        services.AddTransient<IBotCommandHandler, UnknownCommandHandler>();
+
+        services.AddTransient<IBotCallbackQueryHandler, PhoneInputCommandHandler>();
+        services.AddTransient<IBotCallbackQueryHandler, EmailInputCommandHandler>();
 
         services.AddSingleton<IBotCommandHandlerFactory, BotCommandHandlerFactory>();
 

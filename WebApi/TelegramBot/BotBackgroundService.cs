@@ -25,7 +25,6 @@ public class BotBackgroundService : BackgroundService
             AllowedUpdates = new[] { UpdateType.Message, UpdateType.CallbackQuery }
         };
 
-        // Запускаем поллинг
         await _botClient.ReceiveAsync(
             updateHandler: _updateHandler,
             receiverOptions: receiverOptions,

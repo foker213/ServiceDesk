@@ -1,4 +1,5 @@
-﻿using ServiceDesk.TelegramBot.Commands;
+﻿using ServiceDesk.TelegramBot.Commands.ICommand;
+using ServiceDesk.TelegramBot.Factory;
 using Telegram.Bot;
 using Telegram.Bot.Polling;
 using Telegram.Bot.Types;
@@ -19,18 +20,27 @@ public class BotUpdateHandler : IUpdateHandler
 
     public async Task HandleUpdateAsync(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken)
     {
-        if (update.Message is not { } message || update.Message is not { } text)
-            return;
-
-        var chatId = message.Chat.Id;
-
-        var commandHandler = _commandHandlerFactory.CreateCommandHandler(text);
-        if (commandHandler != null)
+        if (update.CallbackQuery != null)
         {
-            await commandHandler.HandleCommandAsync(chatId, text, cancellationToken);
+            IBotCallbackQueryHandler? callbackHandler = _commandHandlerFactory.CreateCallbackQueryHandler(update.CallbackQuery.Data!);
+
+            if (callbackHandler != null) {
+                await callbackHandler.HandleCallbackQueryAsync(update.CallbackQuery, cancellationToken);
+                return;
+            }
+
             return;
         }
 
-        // TODO: доработать сохранение в Redis и выбор через switch/case команды.
+        if (update.Message is not { } message || update.Message is not { } text)
+            return;
+
+
+        long chatId = message.Chat.Id;
+
+        IBotCommandHandler commandHandler = _commandHandlerFactory.CreateCommandHandler(text);
+
+        await commandHandler.HandleCommandAsync(chatId, text, cancellationToken);
+        return;
     }
 }

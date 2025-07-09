@@ -1,6 +1,6 @@
 ﻿using Telegram.Bot.Types;
 
-namespace ServiceDesk.TelegramBot.Commands;
+namespace ServiceDesk.TelegramBot.Commands.ICommand;
 
 public interface IBotCommandHandler
 {

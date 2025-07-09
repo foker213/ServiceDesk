@@ -187,3 +187,9 @@ D:\Projects\ServiceDesk\WebApi\Api\obj\Debug\net8.0\refint\Api.dll
 D:\Projects\ServiceDesk\WebApi\Api\obj\Debug\net8.0\Api.pdb
 D:\Projects\ServiceDesk\WebApi\Api\obj\Debug\net8.0\Api.genruntimeconfig.cache
 D:\Projects\ServiceDesk\WebApi\Api\obj\Debug\net8.0\ref\Api.dll
+C:\Users\thoug\source\repos\ServiceDesk\WebApi\Api\bin\Debug\net8.0\Application.dll
+C:\Users\thoug\source\repos\ServiceDesk\WebApi\Api\bin\Debug\net8.0\Contracts.dll
+C:\Users\thoug\source\repos\ServiceDesk\WebApi\Api\bin\Debug\net8.0\TelegramBot.dll
+C:\Users\thoug\source\repos\ServiceDesk\WebApi\Api\bin\Debug\net8.0\TelegramBot.pdb
+C:\Users\thoug\source\repos\ServiceDesk\WebApi\Api\bin\Debug\net8.0\Application.pdb
+C:\Users\thoug\source\repos\ServiceDesk\WebApi\Api\bin\Debug\net8.0\Contracts.pdb

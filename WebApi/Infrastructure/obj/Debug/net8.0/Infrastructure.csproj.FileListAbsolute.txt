@@ -38,3 +38,7 @@ D:\Projects\ServiceDesk\WebApi\Infrastructure\obj\Debug\net8.0\refint\Infrastruc
 D:\Projects\ServiceDesk\WebApi\Infrastructure\obj\Debug\net8.0\Infrastructure.pdb
 D:\Projects\ServiceDesk\WebApi\Infrastructure\obj\Debug\net8.0\Infrastructure.genruntimeconfig.cache
 D:\Projects\ServiceDesk\WebApi\Infrastructure\obj\Debug\net8.0\ref\Infrastructure.dll
+C:\Users\thoug\source\repos\ServiceDesk\WebApi\Infrastructure\bin\Debug\net8.0\Application.dll
+C:\Users\thoug\source\repos\ServiceDesk\WebApi\Infrastructure\bin\Debug\net8.0\Contracts.dll
+C:\Users\thoug\source\repos\ServiceDesk\WebApi\Infrastructure\bin\Debug\net8.0\Application.pdb
+C:\Users\thoug\source\repos\ServiceDesk\WebApi\Infrastructure\bin\Debug\net8.0\Contracts.pdb

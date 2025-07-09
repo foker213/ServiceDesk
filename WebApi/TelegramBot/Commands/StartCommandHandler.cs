@@ -1,4 +1,5 @@
-﻿using Telegram.Bot;
+﻿using ServiceDesk.TelegramBot.Commands.ICommand;
+using Telegram.Bot;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.ReplyMarkups;
 
@@ -8,7 +9,7 @@ public class StartCommandHandler : IBotCommandHandler
 {
     private readonly ITelegramBotClient _botClient;
 
-    public string Command => "/start";
+    public string Command => BotCommands.BACK;
 
     public StartCommandHandler(ITelegramBotClient botClient)
     {
@@ -17,18 +18,19 @@ public class StartCommandHandler : IBotCommandHandler
 
     public async Task HandleCommandAsync(long chatId, Message text, CancellationToken ct)
     {
-        var replyKeyboard = new ReplyKeyboardMarkup(new[]
-        {
-            new KeyboardButton[] { "Помощь" }
-        })
+        var keyboard = new ReplyKeyboardMarkup(new[]
+            {
+                new KeyboardButton[] { BotCommands.ALREADY_REGISTERED },
+                new KeyboardButton[] { BotCommands.HELP, BotCommands.Conacts }
+            })
         {
             ResizeKeyboard = true
         };
 
         await _botClient.SendMessage(
             chatId,
-            "Здравствуйте!👋 Я бот технической поддержки. Пожалуйста, напишите как я могу к вам обращаться?",
-            replyMarkup: replyKeyboard,
+            "Здравствуйте!👋 \nЯ бот технической поддержки. Если это ваше первое обращение, тогда напишите ваше ФИО, в формате 'Денисов Михаил Юрьевич'.",
+            replyMarkup: keyboard,
             cancellationToken: ct);
     }
 }

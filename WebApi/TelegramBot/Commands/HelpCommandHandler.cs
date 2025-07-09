@@ -1,4 +1,5 @@
-﻿using Telegram.Bot;
+﻿using ServiceDesk.TelegramBot.Commands.ICommand;
+using Telegram.Bot;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;
 using Telegram.Bot.Types.ReplyMarkups;
@@ -9,7 +10,7 @@ public class HelpCommandHandler : IBotCommandHandler
 {
     private readonly ITelegramBotClient _botClient;
 
-    public string Command => "Помощь";
+    public string Command => BotCommands.HELP;
 
     public HelpCommandHandler(ITelegramBotClient botClient)
     {
@@ -22,15 +23,13 @@ public class HelpCommandHandler : IBotCommandHandler
         {
             new[]
             {
-                InlineKeyboardButton.WithUrl("Наш сайт", "https://example.com"),
-                InlineKeyboardButton.WithCallbackData("FAQ", "show_faq")
+                InlineKeyboardButton.WithUrl("Сайт поддержки", "https://example.com")
             }
         });
 
         var replyKeyboard = new ReplyKeyboardMarkup(new[]
         {
-            new KeyboardButton[] { "Помощь", "Контакты" },
-            new KeyboardButton[] { "Настройки" }
+            new KeyboardButton[] { BotCommands.BACK, BotCommands.Conacts }
         })
         {
             ResizeKeyboard = true
@@ -39,8 +38,7 @@ public class HelpCommandHandler : IBotCommandHandler
         await _botClient.SendMessage(
             chatId: chatId,
             text: "📚 <b>Справка по боту</b>\n\n" +
-                  "Здесь вы можете получить помощь по работе с ботом.\n" +
-                  "Выберите нужный раздел:",
+                  "Здесь вы можете получить помощь по работе с ботом.\n",
             parseMode: ParseMode.Html,
             replyMarkup: replyKeyboard,
             cancellationToken: ct);
