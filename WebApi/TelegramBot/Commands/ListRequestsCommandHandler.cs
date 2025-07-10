@@ -1,19 +1,20 @@
 ﻿using ServiceDesk.TelegramBot.CommandKeys;
 using ServiceDesk.TelegramBot.Commands.ICommand;
 using ServiceDesk.TelegramBot.State;
-using Telegram.Bot;
+using Telegram.Bot.Types.Enums;
 using Telegram.Bot.Types.ReplyMarkups;
+using Telegram.Bot;
 
 namespace ServiceDesk.TelegramBot.Commands;
 
-public class ContactCommandHandler : IBotCommandHandler
+public class ListRequestsCommandHandler : IBotCommandHandler
 {
     private readonly ITelegramBotClient _botClient;
     private readonly IUserStateService _userStateService;
 
-    public string Command => BotCommands.Conacts;
+    public string Command => BotCommands.LIST_OLD_REQUESTS;
 
-    public ContactCommandHandler(ITelegramBotClient botClient, IUserStateService userStateService)
+    public ListRequestsCommandHandler(ITelegramBotClient botClient, IUserStateService userStateService)
     {
         _botClient = botClient;
         _userStateService = userStateService;
@@ -23,18 +24,19 @@ public class ContactCommandHandler : IBotCommandHandler
     {
         _userStateService.ClearUserState(chatId);
 
-        var keyboard = new ReplyKeyboardMarkup(new[]
-            {
-                new KeyboardButton[] { BotCommands.BACK, BotCommands.HELP }
-            })
+        var replyKeyboard = new ReplyKeyboardMarkup(new[]
+        {
+            new KeyboardButton[] { BotCommands.BACK, BotCommands.CREATE_NEW_REQUEST }
+        })
         {
             ResizeKeyboard = true
         };
 
         await _botClient.SendMessage(
-            chatId,
-            "Контакты разработчика: \n📨 Электронная почта: zibulski.yandex@gmail.com\n📞 Номер телефона: *Скрыт по соображениям безопасности*",
-            replyMarkup: keyboard,
+            chatId: chatId,
+            text: "Тут будут выводиться прошлые заявки",
+            parseMode: ParseMode.Html,
+            replyMarkup: replyKeyboard,
             cancellationToken: ct);
     }
 }

@@ -1,28 +1,29 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using ServiceDesk.TelegramBot.Commands;
 using ServiceDesk.TelegramBot.Commands.ICommand;
-using Telegram.Bot.Types;
+using ServiceDesk.TelegramBot.Commands.InputHandlers.IInputHandler;
+using ServiceDesk.TelegramBot.State;
 
 namespace ServiceDesk.TelegramBot.Factory;
 
 public class BotCommandHandlerFactory : IBotCommandHandlerFactory
 {
     private readonly IEnumerable<IBotCommandHandler> _commandHandlers;
-    private readonly IEnumerable<IBotCallbackQueryHandler> _callbackHandlers;
     private readonly IServiceProvider _serviceProvider;
+    private readonly IUserStateService _userStateService;
 
-    public BotCommandHandlerFactory(IEnumerable<IBotCommandHandler> commandHandlers, IEnumerable<IBotCallbackQueryHandler> callbackQueryHandler, IServiceProvider serviceProvider)
+    public BotCommandHandlerFactory(IEnumerable<IBotCommandHandler> commandHandlers, IServiceProvider serviceProvider, IUserStateService userStateService)
     {
         _commandHandlers = commandHandlers;
-        _callbackHandlers = callbackQueryHandler;
         _serviceProvider = serviceProvider;
+        _userStateService = userStateService;
     }
 
-    public IBotCommandHandler CreateCommandHandler(Message command)
+    public IBotCommandHandler CreateCommandHandler(string commandText)
     {
-        IBotCommandHandler? commandHandler = _commandHandlers.FirstOrDefault(h => h.Command.Equals(command.Text, StringComparison.CurrentCultureIgnoreCase));
+        IBotCommandHandler? commandHandler = _commandHandlers.FirstOrDefault(h => h.Command.Equals(commandText, StringComparison.CurrentCultureIgnoreCase));
 
-        if (command.Text == "/start")
+        if (commandText == "/start")
             return _serviceProvider.GetRequiredService<StartCommandHandler>();
         else if(commandHandler is null)
             return _serviceProvider.GetRequiredService<UnknownCommandHandler>();
@@ -30,8 +31,16 @@ public class BotCommandHandlerFactory : IBotCommandHandlerFactory
         return commandHandler!;
     }
 
-    public IBotCallbackQueryHandler? CreateCallbackQueryHandler(string command)
+    public IInputDataHandler? CreateInputHandler(long chatId)
     {
-        return _callbackHandlers.FirstOrDefault(h => h.Command.Equals(command, StringComparison.CurrentCultureIgnoreCase));
+        var state = _userStateService.GetUserState(chatId);
+
+        return state switch
+        {
+            UserState.WaitingForFullName => _serviceProvider.GetRequiredService<StartCommandHandler>(),
+            UserState.WaitingForPhone => _serviceProvider.GetRequiredService<PhoneCommandHandler>(),
+            UserState.WaitingForEmail => _serviceProvider.GetRequiredService<EmailCommandHandler>(),
+            _ => null
+        };
     }
 }

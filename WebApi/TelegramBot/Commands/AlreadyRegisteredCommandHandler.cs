@@ -1,6 +1,7 @@
-﻿using ServiceDesk.TelegramBot.Commands.ICommand;
+﻿using ServiceDesk.TelegramBot.CommandKeys;
+using ServiceDesk.TelegramBot.Commands.ICommand;
+using ServiceDesk.TelegramBot.State;
 using Telegram.Bot;
-using Telegram.Bot.Types;
 using Telegram.Bot.Types.ReplyMarkups;
 
 namespace ServiceDesk.TelegramBot.Commands;
@@ -8,16 +9,20 @@ namespace ServiceDesk.TelegramBot.Commands;
 public class AlreadyRegisteredCommandHandler : IBotCommandHandler
 {
     private readonly ITelegramBotClient _botClient;
+    private readonly IUserStateService _userStateService;
 
     public string Command => BotCommands.ALREADY_REGISTERED;
 
-    public AlreadyRegisteredCommandHandler(ITelegramBotClient botClient)
+    public AlreadyRegisteredCommandHandler(ITelegramBotClient botClient, IUserStateService userStateService)
     {
         _botClient = botClient;
+        _userStateService = userStateService;
     }
 
-    public async Task HandleCommandAsync(long chatId, Message text, CancellationToken ct)
+    public async Task HandleCommandAsync(long chatId, string text, string? callbackId, CancellationToken ct)
     {
+        _userStateService.ClearUserState(chatId);
+
         var inlineKeyboard = new InlineKeyboardMarkup(new[]
         {
             new[]

@@ -5,5 +5,5 @@ namespace ServiceDesk.TelegramBot.Commands.ICommand;
 public interface IBotCommandHandler
 {
     string Command { get; }
-    Task HandleCommandAsync(long chatId, Message text, CancellationToken ct);
+    Task HandleCommandAsync(long chatId, string text, string? callbackId, CancellationToken ct);
 }

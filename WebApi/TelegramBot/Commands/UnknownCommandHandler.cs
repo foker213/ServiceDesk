@@ -1,6 +1,6 @@
-﻿using ServiceDesk.TelegramBot.Commands.ICommand;
+﻿using ServiceDesk.TelegramBot.CommandKeys;
+using ServiceDesk.TelegramBot.Commands.ICommand;
 using Telegram.Bot;
-using Telegram.Bot.Types;
 using Telegram.Bot.Types.ReplyMarkups;
 
 namespace ServiceDesk.TelegramBot.Commands;
@@ -16,7 +16,7 @@ public class UnknownCommandHandler : IBotCommandHandler
         _botClient = botClient;
     }
 
-    public async Task HandleCommandAsync(long chatId, Message text, CancellationToken ct)
+    public async Task HandleCommandAsync(long chatId, string text, string? callbackId, CancellationToken ct)
     {
         var keyboard = new ReplyKeyboardMarkup(new[]
             {

@@ -1,4 +1,4 @@
-﻿namespace ServiceDesk.TelegramBot.Commands;
+﻿namespace ServiceDesk.TelegramBot.CommandKeys;
 
 public class BotCommands
 {
@@ -8,4 +8,6 @@ public class BotCommands
     public const string ALREADY_REGISTERED = "Я уже регистрировался 👤";
     public const string PHONE_INPUT = "Номер телефона 📱";
     public const string EMAIL_INPUT = "Электронная почта 📧";
+    public const string LIST_OLD_REQUESTS = "Список прошлых заявок ✨";
+    public const string CREATE_NEW_REQUEST = "Создать новую заявку 📝";
 }
