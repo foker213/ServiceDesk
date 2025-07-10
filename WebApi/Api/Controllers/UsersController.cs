@@ -126,7 +126,7 @@ public class UsersController(IUserRepository repository) : ControllerBase
             existUser.BlockedAt = null;
         }
 
-        await usersRepository.Update(existUser);
+        await usersRepository.UpdateAsync(existUser);
         return NoContent();
     }
 
@@ -140,7 +140,7 @@ public class UsersController(IUserRepository repository) : ControllerBase
         if (existUser == null)
             return NotFound();
 
-        await usersRepository.Delete(id);
+        await usersRepository.DeleteAsync(id);
         return NoContent();
     }
 }

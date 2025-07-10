@@ -43,6 +43,7 @@ public class StartCommandHandler : FullNameInputHandler, IBotCommandHandler
 
     protected override async Task ProcessValidFullNameAsync(long chatId, string fullName, CancellationToken ct)
     {
+        _userStateService.SetUserData(chatId, "FullName", fullName);
         await _emailCommandHandler.HandleCommandAsync(chatId, BotCommands.EMAIL_INPUT, null, ct);
     }
 }

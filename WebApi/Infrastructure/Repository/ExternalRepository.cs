@@ -1,7 +1,7 @@
-﻿using ServiceDesk.Domain.Database.Models;
-using ServiceDesk.Infrastructure.Database;
+﻿using Microsoft.EntityFrameworkCore;
 using ServiceDesk.Application.IRepository;
-using Microsoft.EntityFrameworkCore;
+using ServiceDesk.Domain.Database.Models;
+using ServiceDesk.Infrastructure.Database;
 
 namespace ServiceDesk.Infrastructure.Repository;
 
@@ -12,13 +12,13 @@ internal sealed class ExternalRepository(
 {
     public async Task<ExternalUser?> GetByEmail(string email)
     {
-        var query = GetQuery();
+        IQueryable<ExternalUser> query = GetQuery();
         return await query.Where(x => x.Email == email).FirstOrDefaultAsync();
     }
 
-    public async Task<ExternalUser?> GetByNumber(string number)
+    public async Task<ExternalUser?> GetByPhone(string number)
     {
-        var query = GetQuery();
+        IQueryable<ExternalUser> query = GetQuery();
         return await query.Where(x => x.NumberPhone == number).FirstOrDefaultAsync();
     }
 }

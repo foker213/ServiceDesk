@@ -6,11 +6,14 @@
 		<RootNamespace>ServiceDesk.$(MSBuildProjectName.Replace(" ", ""))</RootNamespace>
 		<NamespaceProvider>true</NamespaceProvider>
 	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Mapster" Version="7.4.0" />
+		<PackageReference Include="Mapster.DependencyInjection" Version="1.0.1" />
+	</ItemGroup>
+		
 	<ItemGroup>
 	  <ProjectReference Include="..\Contracts\Contracts.csproj" />
 	  <ProjectReference Include="..\Domain\Domain.csproj" />
-	</ItemGroup>
-	<ItemGroup>
-	  <Folder Include="Services\" />
 	</ItemGroup>
 </Project>

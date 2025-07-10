@@ -82,21 +82,21 @@ public abstract class Repository<T> : IRepository<T> where T : class, IEntity
         return await query.Where(x => x.Id == id).FirstOrDefaultAsync();
     }
 
-    public virtual async Task Create(T entity)
+    public virtual async Task CreateAsync(T entity)
     {
         entity.CreatedAt = _timeProvider.GetUtcNow().UtcDateTime;
         DbSet.Add(entity);
         await _db.SaveChangesAsync();
     }
 
-    public virtual async Task Update(T entity)
+    public virtual async Task UpdateAsync(T entity)
     {
         entity.UpdatedAt = _timeProvider.GetUtcNow().UtcDateTime;
         DbSet.Update(entity);
         await _db.SaveChangesAsync();
     }
 
-    public async Task Delete(int id)
+    public async Task DeleteAsync(int id)
     {
         var entity = await GetBy(id) ?? throw new ArgumentNullException(nameof(id));
         DbSet.Remove(entity);

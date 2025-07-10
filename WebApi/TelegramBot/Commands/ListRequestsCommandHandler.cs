@@ -34,7 +34,7 @@ public class ListRequestsCommandHandler : IBotCommandHandler
 
         await _botClient.SendMessage(
             chatId: chatId,
-            text: "Тут будут выводиться прошлые заявки",
+            text: text,
             parseMode: ParseMode.Html,
             replyMarkup: replyKeyboard,
             cancellationToken: ct);

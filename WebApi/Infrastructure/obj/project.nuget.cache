@@ -1,10 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "sQIlETS0zCk=",
+  "dgSpecHash": "heL8H+LntAI=",
   "success": true,
   "projectFilePath": "C:\\Users\\thoug\\source\\repos\\ServiceDesk\\WebApi\\Infrastructure\\Infrastructure.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\thoug\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
+    "C:\\Users\\thoug\\.nuget\\packages\\mapster\\7.4.0\\mapster.7.4.0.nupkg.sha512",
+    "C:\\Users\\thoug\\.nuget\\packages\\mapster.core\\1.2.1\\mapster.core.1.2.1.nupkg.sha512",
+    "C:\\Users\\thoug\\.nuget\\packages\\mapster.dependencyinjection\\1.0.1\\mapster.dependencyinjection.1.0.1.nupkg.sha512",
     "C:\\Users\\thoug\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\9.0.5\\microsoft.aspnetcore.cryptography.internal.9.0.5.nupkg.sha512",
     "C:\\Users\\thoug\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\9.0.5\\microsoft.aspnetcore.cryptography.keyderivation.9.0.5.nupkg.sha512",
     "C:\\Users\\thoug\\.nuget\\packages\\microsoft.aspnetcore.diagnostics.entityframeworkcore\\8.0.16\\microsoft.aspnetcore.diagnostics.entityframeworkcore.8.0.16.nupkg.sha512",

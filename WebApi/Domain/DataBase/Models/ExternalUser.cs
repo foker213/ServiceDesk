@@ -10,7 +10,7 @@ public class ExternalUser : Entity
     /// <summary>
     /// Номер телефона
     /// </summary>
-    public required string NumberPhone { get; set; }
+    public string? NumberPhone { get; set; }
 
     /// <summary>
     /// Почтовый адрес

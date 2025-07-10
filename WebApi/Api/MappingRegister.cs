@@ -1,4 +1,5 @@
 ﻿using Mapster;
+using ServiceDesk.Contracts.ExternalUser;
 using ServiceDesk.Contracts.User;
 using ServiceDesk.Domain.Database.Models;
 
@@ -20,5 +21,10 @@ public class MappingRegister : IRegister
             .Map(dest => dest.FirstName, src => src.Name!.Split()[1])
             .Map(dest => dest.MiddleName, src => src.Name!.Split()[2]);
 
+        config.NewConfig<ExternalUserCommonRequested, ExternalUser>()
+            .Map(dest => dest.Name, src => src.FullName);
+
+        config.NewConfig<ExternalUser, ExternalUserCommonRequested>()
+            .Map(dest => dest.FullName, src => src.Name);
     }
 }

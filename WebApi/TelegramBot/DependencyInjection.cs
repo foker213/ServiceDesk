@@ -18,9 +18,9 @@ public static class DependencyInjection
             new TelegramBotClient(configuration["TelegramBot:Token"]!));
 
         services.AddSingleton<IUserStateService, UserStateService>();
-        services.AddSingleton<IBotCommandHandlerFactory, BotCommandHandlerFactory>();
 
         services.AddScoped<BotUpdateHandler>();
+        services.AddScoped<IBotCommandHandlerFactory, BotCommandHandlerFactory>();
 
         AddCommandHandlers(services);
         AddInputHandlers(services);

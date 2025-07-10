@@ -1,9 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "phtqQFU2iF8=",
+  "dgSpecHash": "kJ03LmNTKek=",
   "success": true,
   "projectFilePath": "C:\\Users\\thoug\\source\\repos\\ServiceDesk\\WebApi\\Application\\Application.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\thoug\\.nuget\\packages\\mapster\\7.4.0\\mapster.7.4.0.nupkg.sha512",
+    "C:\\Users\\thoug\\.nuget\\packages\\mapster.core\\1.2.1\\mapster.core.1.2.1.nupkg.sha512",
+    "C:\\Users\\thoug\\.nuget\\packages\\mapster.dependencyinjection\\1.0.1\\mapster.dependencyinjection.1.0.1.nupkg.sha512",
     "C:\\Users\\thoug\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\9.0.5\\microsoft.aspnetcore.cryptography.internal.9.0.5.nupkg.sha512",
     "C:\\Users\\thoug\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\9.0.5\\microsoft.aspnetcore.cryptography.keyderivation.9.0.5.nupkg.sha512",
     "C:\\Users\\thoug\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\9.0.5\\microsoft.extensions.caching.abstractions.9.0.5.nupkg.sha512",

@@ -94,7 +94,6 @@ namespace ServiceDesk.Infrastructure.Database.Migrations
                         .HasColumnType("text");
 
                     b.Property<string>("NumberPhone")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<DateTime?>("UpdatedAt")

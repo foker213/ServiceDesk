@@ -8,8 +8,6 @@
     ".NETCoreApp,Version=v8.0": {
       "Api/1.0.0": {
         "dependencies": {
-          "Mapster": "7.4.0",
-          "Mapster.DependencyInjection": "1.0.1",
           "Microsoft.AspNetCore.OpenApi": "8.0.1",
           "Swashbuckle.AspNetCore": "6.4.0",
           "TelegramBot": "1.0.0"
@@ -708,7 +706,9 @@
       "Application/1.0.0": {
         "dependencies": {
           "Contracts": "1.0.0",
-          "Domain": "1.0.0"
+          "Domain": "1.0.0",
+          "Mapster": "7.4.0",
+          "Mapster.DependencyInjection": "1.0.1"
         },
         "runtime": {
           "Application.dll": {
