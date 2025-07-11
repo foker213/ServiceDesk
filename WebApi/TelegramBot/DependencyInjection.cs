@@ -27,10 +27,9 @@ public static class DependencyInjection
 
         services.AddHostedService(provider =>
         {
-            using var scope = provider.CreateScope();
-            var updateHandler = scope.ServiceProvider.GetRequiredService<BotUpdateHandler>();
             var botClient = provider.GetRequiredService<ITelegramBotClient>();
-            return new BotBackgroundService(botClient, updateHandler);
+            var serviceProvider = provider.GetRequiredService<IServiceProvider>();
+            return new BotBackgroundService(botClient, serviceProvider);
         });
 
         return services;

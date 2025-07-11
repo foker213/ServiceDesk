@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace ServiceDesk.TelegramBot.Commands.InputHandlers;
 
-namespace ServiceDesk.TelegramBot.Commands.InputHandlers
+public class NewRequestInputHandler
 {
-    internal class NewRequestInputHandler
-    {
-    }
+
 }

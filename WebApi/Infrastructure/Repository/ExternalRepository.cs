@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using ServiceDesk.Application.IRepository;
 using ServiceDesk.Domain.Database.Models;
 using ServiceDesk.Infrastructure.Database;
@@ -20,5 +21,17 @@ internal sealed class ExternalRepository(
     {
         IQueryable<ExternalUser> query = GetQuery();
         return await query.Where(x => x.NumberPhone == number).FirstOrDefaultAsync();
+    }
+
+    public override async Task CreateAsync(ExternalUser user)
+    {
+        IQueryable<ExternalUser> query = GetQuery();
+
+        if (query.Any(x => x.NumberPhone == user.NumberPhone || x.Email == user.Email))
+            return;
+
+        user.CreatedAt = _timeProvider.GetUtcNow().UtcDateTime;
+        DbSet.Add(user);
+        await _db.SaveChangesAsync();
     }
 }

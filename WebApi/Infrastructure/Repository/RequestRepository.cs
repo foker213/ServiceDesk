@@ -48,4 +48,10 @@ internal sealed class RequestRepository(
         var query = GetQuery(sort);
         return query.Where(x => x.Status == Status.NotAssigned);
     }
+
+    public async Task<List<Request>> GetByExternalUserId(int externalUserId)
+    {
+        var query = GetQuery();
+        return await query.Where(x => x.Chat!.ExternalUserId == externalUserId).ToListAsync();
+    }
 }

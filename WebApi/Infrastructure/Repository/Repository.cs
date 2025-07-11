@@ -76,7 +76,7 @@ public abstract class Repository<T> : IRepository<T> where T : class, IEntity
         return await query.Skip(offset).Take(limit).ToListAsync();
     }
 
-    public async Task<T?> GetBy(int id, bool noTracking = false)
+    public virtual async Task<T?> GetBy(int id, bool noTracking = false)
     {
         var query = GetQuery(noTracking: noTracking);
         return await query.Where(x => x.Id == id).FirstOrDefaultAsync();

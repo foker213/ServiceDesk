@@ -60,18 +60,26 @@ public class PhoneCommandHandler : PhoneInputHandler, IBotCommandHandler
     {
         string? fullName = _userStateService.GetUserData(chatId, "FullName");
 
-        if (fullName is not null)
+        if (!string.IsNullOrEmpty(fullName))
             await _externalUserService.Create(new()
             {
                 FullName = fullName,
                 Phone = phone
             });
 
-        ExternalUserCommonRequested userInfo = await _externalUserService.GetByPhone(phone);
+        ExternalUserCommonRequested? userInfo = await _externalUserService.GetByPhone(phone);
 
-        string text = $@"{userInfo.FullName}
-                        {BotCommands.LIST_OLD_REQUESTS}
-                        Список заявок пуст";
+        if(userInfo is null)
+        {
+            await _botClient.SendMessage(
+            chatId,
+            "Пользователя с данным номером телефона не существует. Пожалуйста, повторите попытку или зарегистрируйтесь.",
+            cancellationToken: ct);
+
+            return;
+        }
+
+        string text = $"{userInfo.FullName}\n{BotCommands.LIST_OLD_REQUESTS}\nСписок заявок пуст";
 
         await _listRequestsCommandHandler.HandleCommandAsync(chatId, text, null, ct);
     }

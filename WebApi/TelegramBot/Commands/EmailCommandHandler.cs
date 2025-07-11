@@ -61,7 +61,7 @@ public class EmailCommandHandler : EmailInputHandler, IBotCommandHandler
     {
         string? fullName = _userStateService.GetUserData(chatId, "FullName");
 
-        if (fullName is not null)
+        if (!string.IsNullOrEmpty(fullName))
             await _externalUserService.Create(new()
             {
                 FullName = fullName,
@@ -70,9 +70,17 @@ public class EmailCommandHandler : EmailInputHandler, IBotCommandHandler
 
         ExternalUserCommonRequested userInfo = await _externalUserService.GetByEmail(email);
 
-        string text = $@"{userInfo.FullName}
-                        {BotCommands.LIST_OLD_REQUESTS}
-                        Список заявок пуст";
+        if (userInfo is null)
+        {
+            await _botClient.SendMessage(
+            chatId,
+            "Пользователя с данным адресом электронной почты не существует. Пожалуйста, повторите попытку или зарегистрируйтесь.",
+            cancellationToken: ct);
+
+            return;
+        }
+
+        string text = $"{userInfo.FullName}\n{BotCommands.LIST_OLD_REQUESTS}\nСписок заявок пуст";
 
         await _listRequestsCommandHandler.HandleCommandAsync(chatId, text, null, ct);
     }

@@ -22,6 +22,7 @@ public class AlreadyRegisteredCommandHandler : IBotCommandHandler
     public async Task HandleCommandAsync(long chatId, string text, string? callbackId, CancellationToken ct)
     {
         _userStateService.ClearUserState(chatId);
+        _userStateService.ClearUserData(chatId);
 
         var inlineKeyboard = new InlineKeyboardMarkup(new[]
         {

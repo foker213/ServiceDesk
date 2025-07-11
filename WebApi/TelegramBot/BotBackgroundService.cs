@@ -2,33 +2,50 @@
 using Telegram.Bot;
 using Telegram.Bot.Types.Enums;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace ServiceDesk.Infrastructure.TelegramBot;
 
 public class BotBackgroundService : BackgroundService
 {
     private readonly ITelegramBotClient _botClient;
-    private readonly IUpdateHandler _updateHandler;
+    private readonly IServiceProvider _serviceProvider;
 
     public BotBackgroundService(
         ITelegramBotClient botClient,
-        BotUpdateHandler updateHandler)
+        IServiceProvider serviceProvider)
     {
         _botClient = botClient;
-        _updateHandler = updateHandler;
+        _serviceProvider = serviceProvider;
     }
 
-    protected override async Task ExecuteAsync(CancellationToken stoppingToken)
+    protected override async Task ExecuteAsync(CancellationToken ct)
     {
-        var receiverOptions = new ReceiverOptions
+        ReceiverOptions receiverOptions = new ReceiverOptions
         {
             AllowedUpdates = new[] { UpdateType.Message, UpdateType.CallbackQuery }
         };
 
-        await _botClient.ReceiveAsync(
-            updateHandler: _updateHandler,
-            receiverOptions: receiverOptions,
-            cancellationToken: stoppingToken
-        );
+        // Scope создается для каждого сообщения
+        while (!ct.IsCancellationRequested)
+        {
+            try
+            {
+                using (var scope = _serviceProvider.CreateScope())
+                {
+                    var updateHandler = scope.ServiceProvider.GetRequiredService<BotUpdateHandler>();
+                    await _botClient.ReceiveAsync(
+                        updateHandler: updateHandler,
+                        receiverOptions: receiverOptions,
+                        cancellationToken: ct
+                    );
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+                await Task.Delay(1000, ct);
+            }
+        }
     }
 }

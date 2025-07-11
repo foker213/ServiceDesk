@@ -20,6 +20,8 @@ public class BotUpdateHandler : IUpdateHandler
     }
     public Task HandleErrorAsync(ITelegramBotClient botClient, Exception exception, HandleErrorSource source, CancellationToken cancellationToken)
     {
+        Console.WriteLine(exception);
+
         return Task.CompletedTask;
     }
 
