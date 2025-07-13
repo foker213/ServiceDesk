@@ -1,5 +1,7 @@
 ﻿using Mapster;
+using ServiceDesk.Contracts.Chat;
 using ServiceDesk.Contracts.ExternalUser;
+using ServiceDesk.Contracts.Request;
 using ServiceDesk.Contracts.User;
 using ServiceDesk.Domain.Database.Models;
 
@@ -22,9 +24,19 @@ public class MappingRegister : IRegister
             .Map(dest => dest.MiddleName, src => src.Name!.Split()[2]);
 
         config.NewConfig<ExternalUserCommonRequested, ExternalUser>()
-            .Map(dest => dest.Name, src => src.FullName);
+            .Map(dest => dest.Name, src => src.FullName)
+            .Map(dest => dest.Id, src => src.UserId);
 
         config.NewConfig<ExternalUser, ExternalUserCommonRequested>()
-            .Map(dest => dest.FullName, src => src.Name);
+            .Map(dest => dest.FullName, src => src.Name)
+            .Map(dest => dest.UserId, src => src.Id);
+
+        config.NewConfig<ChatInitiated, Chat>();
+
+        config.NewConfig<RequestCreateModel, Request>();
+
+        config.NewConfig<List<Request>, List<RequestReadModel>>();
+
+        config.NewConfig<Request, RequestReadModel>();
     }
 }

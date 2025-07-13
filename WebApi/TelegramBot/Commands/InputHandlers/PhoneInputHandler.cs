@@ -29,5 +29,5 @@ public abstract class PhoneInputHandler : IInputDataHandler
 
     private bool IsValidPhone(string phone) => Regex.IsMatch(phone, @"^\+7-\d{3}-\d{3}-\d{2}-\d{2}$");
 
-    protected abstract Task ProcessValidPhoneAsync(long chatId, string email, CancellationToken ct);
+    protected abstract Task ProcessValidPhoneAsync(long chatId, string phone, CancellationToken ct);
 }

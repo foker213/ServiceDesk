@@ -42,6 +42,7 @@ public static class DependencyInjection
         services.AddTransient<EmailCommandHandler>();
         services.AddTransient<PhoneCommandHandler>();
         services.AddTransient<ListRequestsCommandHandler>();
+        services.AddTransient<NewRequestCommandHandler>();
 
         services.AddTransient<IBotCommandHandler, StartCommandHandler>();
         services.AddTransient<IBotCommandHandler, HelpCommandHandler>();
@@ -49,6 +50,7 @@ public static class DependencyInjection
         services.AddTransient<IBotCommandHandler, AlreadyRegisteredCommandHandler>();
         services.AddTransient<IBotCommandHandler, PhoneCommandHandler>();
         services.AddTransient<IBotCommandHandler, EmailCommandHandler>();
+        services.AddTransient<IBotCommandHandler, NewRequestCommandHandler>();
         services.AddTransient<IBotCommandHandler, UnknownCommandHandler>();
     }
 
@@ -57,5 +59,6 @@ public static class DependencyInjection
         services.AddTransient<IInputDataHandler, StartCommandHandler>();
         services.AddTransient<IInputDataHandler, EmailCommandHandler>();
         services.AddTransient<IInputDataHandler, PhoneCommandHandler>();
+        services.AddTransient<IInputDataHandler, NewRequestCommandHandler>();
     }
 }

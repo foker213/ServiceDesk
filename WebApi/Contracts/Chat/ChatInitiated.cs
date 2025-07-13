@@ -2,6 +2,6 @@
 
 public class ChatInitiated
 {
-    public Guid UserId { get; set; }
-    public required string TelegramChatId { get; set; }
+    public int ExternalUserId { get; set; }
+    public required long TelegramChatId { get; set; }
 }

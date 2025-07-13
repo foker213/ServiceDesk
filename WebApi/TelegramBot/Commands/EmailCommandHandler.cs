@@ -1,5 +1,8 @@
 ﻿using ServiceDesk.Application.IServices;
+using ServiceDesk.Application.Services;
 using ServiceDesk.Contracts.ExternalUser;
+using ServiceDesk.Contracts.Request;
+using ServiceDesk.Domain.Database;
 using ServiceDesk.TelegramBot.CommandKeys;
 using ServiceDesk.TelegramBot.Commands.ICommand;
 using ServiceDesk.TelegramBot.Commands.InputHandlers;
@@ -14,6 +17,7 @@ public class EmailCommandHandler : EmailInputHandler, IBotCommandHandler
 {
     private readonly IUserStateService _userStateService;
     private readonly IExternalUserService _externalUserService;
+    private readonly IRequestService _requestService;
 
     private readonly ListRequestsCommandHandler _listRequestsCommandHandler;
 
@@ -23,13 +27,15 @@ public class EmailCommandHandler : EmailInputHandler, IBotCommandHandler
         ITelegramBotClient botClient, 
         IUserStateService userStateService, 
         ListRequestsCommandHandler listRequestsCommandHandler,
-        IExternalUserService externalUserService
+        IExternalUserService externalUserService,
+        IRequestService requestService
     ) 
         : base(botClient)
     {
         _userStateService = userStateService;
         _listRequestsCommandHandler = listRequestsCommandHandler;
         _externalUserService = externalUserService;
+        _requestService = requestService;
     }
 
     public async Task HandleCommandAsync(long chatId, string text, string? callbackId, CancellationToken ct)
@@ -80,7 +86,24 @@ public class EmailCommandHandler : EmailInputHandler, IBotCommandHandler
             return;
         }
 
-        string text = $"{userInfo.FullName}\n{BotCommands.LIST_OLD_REQUESTS}\nСписок заявок пуст";
+        List<RequestReadModel> requests = await _requestService.GetByExternalUserId(userInfo.UserId);
+
+        IEnumerable<RequestReadModel> filteredRequests = requests.Where(r => r.Status == Convert.ToString(Status.Solved));
+
+        string text = $"{userInfo.FullName}\n{BotCommands.LIST_OLD_REQUESTS}\n";
+
+        if (filteredRequests == null || !filteredRequests.Any())
+        {
+            text += "Список заявок пуст";
+        }
+        else
+        {
+
+            text += string.Join("\n", filteredRequests.Select(r =>
+                $"{r.CreateAt?.ToString("dd.MM.yyyy HH:mm")} - {r.Description}"));
+        }
+
+        _userStateService.SetUserData(chatId, "UserId", Convert.ToString(userInfo.UserId));
 
         await _listRequestsCommandHandler.HandleCommandAsync(chatId, text, null, ct);
     }

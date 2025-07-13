@@ -14,6 +14,7 @@ public class BotCommandHandlerFactory : IBotCommandHandlerFactory
     private readonly UnknownCommandHandler _unknownHandler;
     private readonly PhoneCommandHandler _phoneHandler;
     private readonly EmailCommandHandler _emailHandler;
+    private readonly NewRequestCommandHandler _newRequestHandler;
 
     public BotCommandHandlerFactory(
         IEnumerable<IBotCommandHandler> commandHandlers,
@@ -21,7 +22,8 @@ public class BotCommandHandlerFactory : IBotCommandHandlerFactory
         StartCommandHandler startCommandHandler,
         UnknownCommandHandler unknownCommandHandler,
         PhoneCommandHandler phoneCommandHandler,
-        EmailCommandHandler emailCommandHandler
+        EmailCommandHandler emailCommandHandler,
+        NewRequestCommandHandler newRequestCommandHandler
     )
     {
         _commandHandlers = commandHandlers;
@@ -30,6 +32,7 @@ public class BotCommandHandlerFactory : IBotCommandHandlerFactory
         _unknownHandler = unknownCommandHandler;
         _phoneHandler = phoneCommandHandler;
         _emailHandler = emailCommandHandler;
+        _newRequestHandler = newRequestCommandHandler;
     }
 
     public IBotCommandHandler CreateCommandHandler(string commandText)
@@ -51,6 +54,7 @@ public class BotCommandHandlerFactory : IBotCommandHandlerFactory
             UserState.WaitingForFullName => _startHandler,
             UserState.WaitingForPhone => _phoneHandler,
             UserState.WaitingForEmail => _emailHandler,
+            UserState.WaitengForDescription => _newRequestHandler,
             _ => null
         };
     }

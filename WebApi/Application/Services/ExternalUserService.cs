@@ -24,6 +24,13 @@ public class ExternalUserService : IExternalUserService
     public async Task Delete(int id) =>
         await _externalUserRepository.DeleteAsync(id);
 
+    public async Task<List<ExternalUserCommonRequested>> GetAll(int limit = 10, int offset = 0, string? sort = null, bool noTracking = false)
+    {
+        List<ExternalUser> result = await _externalUserRepository.GetAll(limit, offset, sort);
+
+        return result.Adapt<List<ExternalUserCommonRequested>>();
+    }
+
     public async Task<ExternalUserCommonRequested> GetByEmail(string email)
     {
         ExternalUser? result = await _externalUserRepository.GetByEmail(email);

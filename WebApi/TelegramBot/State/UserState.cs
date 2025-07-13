@@ -5,5 +5,6 @@ public enum UserState
     None,
     WaitingForFullName,
     WaitingForEmail,
-    WaitingForPhone
+    WaitingForPhone,
+    WaitengForDescription
 }

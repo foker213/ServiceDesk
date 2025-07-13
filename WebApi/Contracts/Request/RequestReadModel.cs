@@ -11,5 +11,6 @@ public class RequestReadModel
     public int ChatId { get; set; }
     public DateTime? DateStartRequest { get; set; }
     public DateTime? DateEndRequest { get; set; }
+    public required string Description { get; set; }
     public DateTime? CreateAt { get; set; }
 }

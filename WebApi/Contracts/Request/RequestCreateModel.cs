@@ -6,5 +6,4 @@ public class RequestCreateModel
 {
     public long ChatId { get; set; }
     public required string Description { get; set; }
-    public required ExternalUserCommonRequested ExternalUser { get; set; }
 }

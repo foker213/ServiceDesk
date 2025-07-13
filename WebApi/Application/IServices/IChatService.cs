@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ServiceDesk.Contracts.Chat;
 
-namespace ServiceDesk.Application.IServices
+namespace ServiceDesk.Application.IServices;
+
+public interface IChatService
 {
-    internal interface IChatService
-    {
-    }
+    Task CreateAsync(ChatInitiated chatInitiated);
+    Task<int> GetId(long telegramChatId, bool noTracking = false);
 }

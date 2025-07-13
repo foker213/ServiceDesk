@@ -14,7 +14,7 @@ public class RequestService : IRequestService
     {
         _requestRepository = requestRepository;
     }
-    public async Task Create(RequestCreateModel model) =>
+    public async Task CreateAsync(RequestCreateModel model) =>
         await _requestRepository.CreateAsync(model.Adapt<Request>());
 
     public async Task<List<RequestReadModel>> GetByExternalUserId(int externalUserId)

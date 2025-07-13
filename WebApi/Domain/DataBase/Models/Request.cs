@@ -6,7 +6,7 @@ public class Request : Entity
     /// Прикрепленный пользователь
     /// </summary>
     public User? User { get; set; } = default!;
-    public int UserId { get; set; }
+    public int? UserId { get; set; }
 
     /// <summary>
     /// Статус заявки
@@ -28,4 +28,9 @@ public class Request : Entity
     /// Дата завершения выполнения заявки
     /// </summary>
     public DateTime? DateEndRequest { get; set; }
+
+    /// <summary>
+    /// Дата завершения выполнения заявки
+    /// </summary>
+    public required string Description { get; set; }
 }

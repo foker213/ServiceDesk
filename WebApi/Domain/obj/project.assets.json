@@ -693,23 +693,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Tsibulsky.EDISON\\.nuget\\packages\\": {},
+    "C:\\Users\\thoug\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Projects\\ServiceDesk\\WebApi\\Domain\\Domain.csproj",
+      "projectUniqueName": "C:\\Users\\thoug\\source\\repos\\ServiceDesk\\WebApi\\Domain\\Domain.csproj",
       "projectName": "Domain",
-      "projectPath": "D:\\Projects\\ServiceDesk\\WebApi\\Domain\\Domain.csproj",
-      "packagesPath": "C:\\Users\\Tsibulsky.EDISON\\.nuget\\packages\\",
-      "outputPath": "D:\\Projects\\ServiceDesk\\WebApi\\Domain\\obj\\",
+      "projectPath": "C:\\Users\\thoug\\source\\repos\\ServiceDesk\\WebApi\\Domain\\Domain.csproj",
+      "packagesPath": "C:\\Users\\thoug\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\thoug\\source\\repos\\ServiceDesk\\WebApi\\Domain\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Tsibulsky.EDISON\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\thoug\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -737,7 +737,7 @@
         "auditLevel": "low",
         "auditMode": "direct"
       },
-      "SdkAnalysisLevel": "9.0.200"
+      "SdkAnalysisLevel": "9.0.300"
     },
     "frameworks": {
       "net8.0": {
@@ -764,7 +764,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.201/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.300/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
