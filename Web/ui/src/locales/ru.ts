@@ -133,8 +133,8 @@ export default {
         projects: 'Проекты',
         catalog: 'Справочники',
         archive: 'Архив',
-        myApplications: 'Мои заявки',
-        undistributedApplications: 'Нераспределенные заявки',
+        myRequests: 'Мои заявки',
+        undistributedRequests: 'Нераспределенные заявки',
         login: 'Авторизация',
         level: 'Multi level menu',
         menu: 'Menu',
@@ -445,6 +445,17 @@ export default {
         phone: 'Телефон',
         blocked: 'Заблокирован',
         blockedReason: 'Причина блокировки'
+    },
+    tableRequests: {
+        id: 'ID',
+        userAttached: 'Выполняет',
+        messageUnreadNotification: 'Уведомление',
+        dateStartRequest: 'Начата',
+        dateEndRequest: 'Завершена',
+        description: 'Описание',
+        createdAt: 'Создана',
+        updatedAt: 'Обновлена',
+        status: 'Статус'
     },
     tableDemo: {
         table: 'Table',

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using ServiceDesk.Application.IServices;
+using System.Security.Claims;
 
 namespace ServiceDesk.Infrastructure;
 
@@ -12,7 +13,7 @@ public class CurrentUserService : ICurrentUserService
         _httpContextAccessor = httpContextAccessor;
     }
 
-    public int UserId => Convert.ToInt32(GetClaimValue("ID"));
+    public int UserId => Convert.ToInt32(GetClaimValue(ClaimTypes.NameIdentifier));
 
     private string? GetClaimValue(string claimType)
     {

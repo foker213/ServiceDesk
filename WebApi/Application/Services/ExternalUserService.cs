@@ -8,7 +8,7 @@ namespace ServiceDesk.Application.Services;
 
 public class ExternalUserService : IExternalUserService
 {
-    private IExternalUserRepository _externalUserRepository;
+    private readonly IExternalUserRepository _externalUserRepository;
 
     public ExternalUserService(IExternalUserRepository externalUserRepository)
     {

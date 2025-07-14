@@ -5,7 +5,7 @@ import { Dialog } from '@/components/Dialog'
 import { useI18n } from '@/hooks/web/useI18n'
 import { ElTag } from 'element-plus'
 import { Table } from '@/components/Table'
-import { getUsersApi, deleteUserApi, saveUserApi, getUserApi } from '@/api/users'
+import { getRequestApi, getRequestsApi, deleteRequestApi, saveRequestApi, updateRequestStatusApi } from '@/api/requests'
 import { useTable } from '@/hooks/web/useTable'
 import { TableData } from '@/api/table/types'
 import { ref, unref, reactive } from 'vue'
@@ -20,16 +20,17 @@ const ids = ref<string[]>([])
 const { tableRegister, tableState, tableMethods } = useTable({
     fetchDataApi: async () => {
         const { currentPage, pageSize } = tableState
-        const res = await getUsersApi({
+        const res = await getRequestsApi({
             pageIndex: unref(currentPage),
             pageSize: unref(pageSize),
+            dictionaryType: 'undistributedRequests',
             ...unref(searchParams),
             ...unref(sortParams)
         })
         return res
     },
     fetchDelApi: async () => {
-        const res = await deleteUserApi(unref(ids))
+        const res = await deleteRequestApi(unref(ids))
         return !!res
     }
 })
@@ -52,19 +53,12 @@ const { t } = useI18n()
 
 const action = async (row: TableData, type: string) => {
     if (type === 'edit' || type === 'detail') {
-        row = await getUserApi(row.id)
+        row = await getRequestApi(row.id)
     }
 
     dialogTitle.value = t(type === 'edit' ? 'exampleDemo.edit' : 'exampleDemo.detail')
     actionType.value = type
     currentRow.value = row
-    dialogVisible.value = true
-}
-
-const AddAction = () => {
-    dialogTitle.value = t('exampleDemo.add')
-    actionType.value = 'add'
-    currentRow.value = null
     dialogVisible.value = true
 }
 
@@ -83,177 +77,54 @@ const crudSchemas = reactive<CrudSchema[]>([
     },
     {
         field: 'id',
-        label: t('tableUsers.id'),
+        label: t('tableRequests.id'),
         fixed: true,
-        search: {
+        addForm: {
             hidden: true
         },
+        editForm: {
+            hidden: true
+        }
+    },
+    {
+        field: 'description',
+        label: t('tableRequests.description'),
+        addForm: {
+            hidden: true
+        }
+    },
+    {
+        field: 'status',
+        label: t('tableRequests.status'),
         form: {
-            hidden: true
-        }
-    },
-
-    {
-        field: 'login',
-        label: t('tableUsers.login'),
-        table: {
-            hidden: true
-        },
-        editForm: {
-            hidden: true
-        },
-        detailForm: {
-            hidden: true
-        }
-    },
-    {
-        field: 'password',
-        label: t('tableUsers.password'),
-        table: {
-            hidden: true
-        },
-        form: {
-            component: 'InputPassword'
-        },
-        editForm: {
-            hidden: true
-        },
-        detailForm: {
-            hidden: true
-        }
-    },
-
-    {
-        field: 'lastName',
-        label: t('tableUsers.lastName'),
-        table: {
-            hidden: true
+            component: 'EnumSelect',
+            componentProps: {
+                enumType: 'Status'
+            }
         },
         addForm: {
-            colProps: {
-                span: 24
-            }
+            hidden: true
         },
         editForm: {
-            colProps: {
-                span: 24
-            }
-        },
-        detailForm: {
-            hidden: true
-        }
-    },
-    {
-        field: 'firstName',
-        label: t('tableUsers.firstName'),
-        table: {
             hidden: true
         },
-        addForm: {
-            colProps: {
-                span: 24
-            }
-        },
-        editForm: {
-            colProps: {
-                span: 24
-            }
-        },
-        detailForm: {
-            hidden: true
-        }
-    },
-    {
-        field: 'middleName',
-        label: t('tableUsers.middleName'),
-        table: {
-            hidden: true
-        },
-        addForm: {
-            colProps: {
-                span: 24
-            }
-        },
-        editForm: {
-            colProps: {
-                span: 24
-            }
-        },
-        detailForm: {
-            hidden: true
-        }
-    },
-    {
-        field: 'name',
-        label: t('tableUsers.name'),
         search: {
             hidden: true
         },
+    },
+    {
+        field: 'createdAt',
+        label: t('tableRequests.createdAt'),
         addForm: {
             hidden: true
         },
         editForm: {
-            hidden: true,
-            colProps: {
-                // TODO: Need fix hidden fields in base component
-                span: 24
-            }
-        },
-        detailForm: {
-            span: 24
-        }
-    },
-    {
-        field: 'email',
-        label: t('tableUsers.email'),
-        addForm: {
-            colProps: {
-                span: 24
-            }
-        }
-    },
-
-    {
-        field: 'phoneNumber',
-        label: t('tableUsers.phone'),
-        addForm: {
             hidden: true
-        }
-    },
-    {
-        field: 'blocked',
-        label: t('tableUsers.blocked'),
-        addForm: {
-            hidden: true
-        },
-        editForm: {
-            component: 'Switch'
-        }
-    },
-    {
-        field: 'blockedReason',
-        label: t('tableUsers.blockedReason'),
-        search: {
-            hidden: true
-        },
-        table: {
-            hidden: true
-        },
-        addForm: {
-            hidden: true
-        },
-        editForm: {
-            colProps: {
-                span: 24
-            }
-        },
-        detailForm: {
-            span: 24
         }
     },
     {
         field: 'action',
-        width: '210px',
+        width: '280px',
         label: t('tableDemo.action'),
         fixed: 'right',
         sortable: false,
@@ -268,6 +139,16 @@ const crudSchemas = reactive<CrudSchema[]>([
                 default: (data: any) => {
                     return (
                         <>
+                            <BaseButton
+                                type= "primary"
+                                icon = { useIcon({ icon: 'vi-ep:connection' }) }
+                                onClick = { async() => {
+                                    const success = await updateRequestStatusApi(data.row.id);
+                                    if (success) {
+                                        await getList();
+                                    }
+                                }}
+                            />
                             <BaseButton
                                 type="primary"
                                 icon={useIcon({ icon: 'vi-ep:edit' })}
@@ -321,7 +202,7 @@ const save = async () => {
 
     if (formData) {
         saveLoading.value = true
-        const res = await saveUserApi(formData)
+        const res = await saveRequestApi(formData)
             .catch(() => {})
             .finally(() => {
                 saveLoading.value = false
@@ -350,54 +231,38 @@ const sortChange = async (column) => {
 
 <template>
     <ContentWrap>
-        <div class="mb-10px">
-            <BaseButton type="primary" @click="AddAction">
-                {{ t('exampleDemo.add') }}
-            </BaseButton>
-        </div>
-
-        <Table
-            v-model:pageSize="pageSize"
-            v-model:currentPage="currentPage"
-            :columns="allSchemas.tableColumns"
-            :data="dataList"
-            :loading="loading"
-            :sortable="true"
-            :pagination="{ total: total }"
-            :default-sort="{ prop: 'id', order: 'descending' }"
-            @sort-change="sortChange"
-            @register="tableRegister"
-        />
+        <Table v-model:pageSize="pageSize"
+               v-model:currentPage="currentPage"
+               :columns="allSchemas.tableColumns"
+               :data="dataList"
+               :loading="loading"
+               :sortable="true"
+               :pagination="{ total: total }"
+               :default-sort="{ prop: 'id', order: 'descending' }"
+               @sort-change="sortChange"
+               @register="tableRegister" />
     </ContentWrap>
 
     <Dialog v-model="dialogVisible" :title="dialogTitle">
-        <Write
-            v-if="actionType === 'add'"
-            ref="writeRef"
-            :form-schema="allSchemas.addFormSchema"
-            :current-row="currentRow"
-        />
+        <Write v-if="actionType === 'add'"
+               ref="writeRef"
+               :form-schema="allSchemas.addFormSchema"
+               :current-row="currentRow" />
 
-        <Write
-            v-if="actionType === 'edit'"
-            ref="writeRef"
-            :form-schema="allSchemas.editFormSchema"
-            :current-row="currentRow"
-        />
+        <Write v-if="actionType === 'edit'"
+               ref="writeRef"
+               :form-schema="allSchemas.editFormSchema"
+               :current-row="currentRow" />
 
-        <Detail
-            v-if="actionType === 'detail'"
-            :detail-schema="allSchemas.detailFormSchema"
-            :current-row="currentRow"
-        />
+        <Detail v-if="actionType === 'detail'"
+                :detail-schema="allSchemas.detailFormSchema"
+                :current-row="currentRow" />
 
         <template #footer>
-            <BaseButton
-                v-if="actionType !== 'detail'"
-                type="primary"
-                :loading="saveLoading"
-                @click="save"
-            >
+            <BaseButton v-if="actionType !== 'detail'"
+                        type="primary"
+                        :loading="saveLoading"
+                        @click="save">
                 {{ t('exampleDemo.save') }}
             </BaseButton>
             <BaseButton @click="dialogVisible = false">{{ t('dialogDemo.close') }}</BaseButton>

@@ -97,7 +97,7 @@ public class PhoneCommandHandler : PhoneInputHandler, IBotCommandHandler
             var filteredRequests = requests.Where(r => r.Status == Convert.ToString(Status.Solved));
 
             text += string.Join("\n", filteredRequests.Select(r =>
-                $"{r.CreateAt?.ToString("dd.MM.yyyy HH:mm")} - {r.Description}"));
+                $"{r.CreatedAt.ToString("dd.MM.yyyy HH:mm")} - {r.Description}"));
         }
 
         _userStateService.SetUserData(chatId, "UserId", Convert.ToString(userInfo.UserId));

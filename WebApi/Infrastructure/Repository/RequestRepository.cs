@@ -4,6 +4,7 @@ using ServiceDesk.Application.IRepository;
 using Microsoft.EntityFrameworkCore;
 using ServiceDesk.Domain.Database;
 using ServiceDesk.Application.IServices;
+using ServiceDesk.Contracts;
 
 namespace ServiceDesk.Infrastructure.Repository;
 
@@ -13,11 +14,13 @@ internal sealed class RequestRepository(
     ICurrentUserService userService
 ) : Repository<Request>(db, tp), IRequestRepository
 {
-    public async Task<List<Request>> GetAll(int limit = 10, int offset = 0, string? sort = null, string dictionaryType = "")
+    public async Task<PagingModel<Request>> GetAll(int limit = 10, int offset = 0, string? sort = null, string dictionaryType = "")
     {
         int userId = userService.UserId;
         var query = GetQueryFactory(dictionaryType, userId)(sort);
-        return await query.Skip(offset).Take(limit).ToListAsync();
+        List<Request> result = await query.Skip(offset).Take(limit).ToListAsync();
+
+        return new(result.Count(), result);
     }
 
     private Func<string?, IQueryable<Request>> GetQueryFactory(string dictionaryType, int userId)
@@ -26,7 +29,7 @@ internal sealed class RequestRepository(
         {
             "archive" => GetArchiveQuery,
             "myRequests" => sort => GetMyRequestsQuery(sort, userId),
-            "unclaimedRequests" => GetUnclaimedRequestsQuery,
+            "undistributedRequests" => GetUnclaimedRequestsQuery,
             _ => throw new ArgumentException($"Unknown dictionary type: {dictionaryType}")
         };
     }

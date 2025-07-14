@@ -128,8 +128,8 @@ export default {
         projects: 'Projects',
         catalog: 'Catalog',
         archive: 'Archive',
-        myApplications: 'My applications',
-        undistributedApplications: 'Undistributed applications',
+        myRequests: 'My requests',
+        undistributedRequests: 'Undistributed requests',
         login: 'Login',
         level: 'Multi level menu',
         menu: 'Menu',
@@ -442,6 +442,17 @@ export default {
         deputy: 'Deputy',
         blocked: 'Bloacked',
         blockedReason: 'Bloacked reason'
+    },
+    tableRequests: {
+        id: 'ID',
+        userAttached: 'Performs',
+        messageUnreadNotification: 'Notification',
+        dateStartRequest: 'Started',
+        dateEndRequest: 'Completed',
+        description: 'Description',
+        createdAt: 'Created',
+        updatedAt: 'Updated',
+        status: 'Status'
     },
     tableDemo: {
         table: 'Table',

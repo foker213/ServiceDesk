@@ -144,7 +144,7 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
       port: 80,
       proxy: {
         '/api': {
-          target: 'http://api:8080/',
+          target: 'http://localhost:5186/',
           changeOrigin: true,
           secure: false,
           rewrite: (path) => path.replace(/^\/api/, '')

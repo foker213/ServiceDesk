@@ -35,17 +35,9 @@ export const getUserApi = async (id: string): Promise<IResponse<User>> => {
         }).json()
 }
 
-export const deleteUsersApi = async (ids: string[] | number[]): Promise<boolean> => {
-    if (ids.length == 1) {
-        const resp = await api.delete(`http://localhost:5186/users/${ids[0]}/`,
-            {
-                credentials: 'include'
-            })
-        return resp.status == 204
-    }
-    const resp = await api.delete(`http://localhost:5186/users/`,
+export const deleteUserApi = async (ids: string[] | number[]): Promise<boolean> => {
+    const resp = await api.delete(`http://localhost:5186/users/${ids[0]}/`,
         {
-            searchParams: { ids: ids.join(',') },
             credentials: 'include'
         })
     return resp.status == 204

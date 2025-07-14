@@ -27,7 +27,7 @@ internal sealed class ExternalRepository(
     {
         IQueryable<ExternalUser> query = GetQuery();
 
-        if (query.Any(x => x.NumberPhone == user.NumberPhone || x.Email == user.Email))
+        if (query.Any(x => (x.NumberPhone != null && x.NumberPhone == user.NumberPhone) || (x.Email != null && x.Email == user.Email)))
             return;
 
         user.CreatedAt = _timeProvider.GetUtcNow().UtcDateTime;

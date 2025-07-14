@@ -14,7 +14,7 @@ namespace ServiceDesk.Api.Controllers;
 [Route("[controller]")]
 public class UsersController(IUserRepository repository) : ControllerBase
 {
-    private readonly IUserRepository usersRepository = repository;
+    private readonly IUserRepository _usersRepository = repository;
 
     [HttpGet]
     [Produces(MediaTypeNames.Application.Json)]
@@ -27,10 +27,10 @@ public class UsersController(IUserRepository repository) : ControllerBase
     {
         int limit = pageSize ?? 10;
         int offset = ((pageIndex ?? 1) - 1) * limit;
-        var users = await usersRepository.GetAll(limit, offset, sort);
+        var users = await _usersRepository.GetAll(limit, offset, sort);
         return new PagingModel<UserReadModel>
         (
-            Total: await usersRepository.Count(),
+            Total: await _usersRepository.Count(),
             Data: users.Adapt<List<UserReadModel>>()
         );
     }
@@ -42,7 +42,7 @@ public class UsersController(IUserRepository repository) : ControllerBase
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<ActionResult<UserReadModel>> GetBy(int id)
     {
-        var user = await usersRepository.GetBy(id);
+        var user = await _usersRepository.GetBy(id);
         return user is null ? NotFound() : user.Adapt<UserReadModel>();
     }
 
@@ -53,7 +53,7 @@ public class UsersController(IUserRepository repository) : ControllerBase
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<ActionResult<UserReadModel>> Create(UserCreateModel newUser)
     {
-        var existUser = await usersRepository.GetByLoginOrEmail(
+        var existUser = await _usersRepository.GetByLoginOrEmail(
             login: newUser.Login,
             email: newUser.Email
         );
@@ -70,14 +70,14 @@ public class UsersController(IUserRepository repository) : ControllerBase
         var user = newUser.Adapt<User>();
         try
         {
-            await usersRepository.Create(user, newUser.Password);
+            await _usersRepository.Create(user, newUser.Password);
         }
         catch (Exception ex)
         {
             return BadRequest(new { detail = ex.Message });
         }
 
-        var createdUser = await usersRepository.GetBy(user.Id)!;
+        var createdUser = await _usersRepository.GetBy(user.Id)!;
         return CreatedAtAction(
             nameof(GetBy),
             new { id = user.Id },
@@ -92,7 +92,7 @@ public class UsersController(IUserRepository repository) : ControllerBase
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<ActionResult> Update(int id, UserChangeModel user)
     {
-        var existUser = await usersRepository.GetBy(id);
+        var existUser = await _usersRepository.GetBy(id);
         if (existUser == null)
             return NotFound();
 
@@ -101,7 +101,7 @@ public class UsersController(IUserRepository repository) : ControllerBase
 
         if (existUser.Email != user.Email)
         {
-            var anotherUserWithSameEmail = await usersRepository.GetByEmail(user.Email);
+            var anotherUserWithSameEmail = await _usersRepository.GetByEmail(user.Email);
             if (anotherUserWithSameEmail != null)
                 return BadRequest(new { detail = "Другой сотрудник с таким Email уже существует" });
 
@@ -126,7 +126,7 @@ public class UsersController(IUserRepository repository) : ControllerBase
             existUser.BlockedAt = null;
         }
 
-        await usersRepository.UpdateAsync(existUser);
+        await _usersRepository.UpdateAsync(existUser);
         return NoContent();
     }
 
@@ -136,11 +136,11 @@ public class UsersController(IUserRepository repository) : ControllerBase
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<ActionResult> Delete(int id)
     {
-        var existUser = await usersRepository.GetBy(id);
+        var existUser = await _usersRepository.GetBy(id);
         if (existUser == null)
             return NotFound();
 
-        await usersRepository.DeleteAsync(id);
+        await _usersRepository.DeleteAsync(id);
         return NoContent();
     }
 }

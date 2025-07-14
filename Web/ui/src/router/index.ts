@@ -36,7 +36,7 @@ export const constantRouterMap: AppRouteRecordRaw[] = [
     },
     {
         path: '/login',
-        component: () => import('@/views/Login/Login.vue'),
+        component: () => import('@/views/login/Login.vue'),
         name: 'Login',
         meta: {
             hidden: true,
@@ -106,7 +106,7 @@ export const asyncRouterMap: AppRouteRecordRaw[] = [
         name: 'Catalog',
         path: '/catalog',
         component: Layout,
-        redirect: '/catalog/myapplications',
+        redirect: '/catalog/myrequests',
         meta: {
             title: t('router.catalog'),
             icon: 'vi-bx:bxs-component',
@@ -114,20 +114,20 @@ export const asyncRouterMap: AppRouteRecordRaw[] = [
         },
         children: [
             {
-                name: 'MyApplications',
-                path: 'myapplications',
-                component: () => import('@/views/Catalog/MyApplications/MyApplications.vue'),
+                name: 'MyRequests',
+                path: 'myrequests',
+                component: () => import('@/views/Catalog/MyRequests/MyRequests.vue'),
                 meta: {
-                    title: t('router.myApplications'),
+                    title: t('router.myRequests'),
                     noCache: true
                 }
             },
             {
-                name: 'UndistributedApplications',
-                path: 'undistributedapplications',
-                component: () => import('@/views/Catalog/UndistributedApplications/UndistributedApplications.vue'),
+                name: 'UndistributedRequests',
+                path: 'undistributedrequests',
+                component: () => import('@/views/Catalog/UndistributedRequests/UndistributedRequests.vue'),
                 meta: {
-                    title: t('router.undistributedApplications'),
+                    title: t('router.undistributedRequests'),
                     noCache: true
                 }
             },

@@ -1,4 +1,5 @@
 ﻿using Mapster;
+using ServiceDesk.Contracts;
 using ServiceDesk.Contracts.Chat;
 using ServiceDesk.Contracts.ExternalUser;
 using ServiceDesk.Contracts.Request;
@@ -35,8 +36,8 @@ public class MappingRegister : IRegister
 
         config.NewConfig<RequestCreateModel, Request>();
 
-        config.NewConfig<List<Request>, List<RequestReadModel>>();
-
         config.NewConfig<Request, RequestReadModel>();
+
+        config.NewConfig<PagingModel<Request>, PagingModel<RequestReadModel>>();
     }
 }

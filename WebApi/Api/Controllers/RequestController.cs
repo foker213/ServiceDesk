@@ -1,5 +1,8 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using ServiceDesk.Application.IRepository;
+using ServiceDesk.Application.IServices;
+using ServiceDesk.Contracts;
 using ServiceDesk.Contracts.Request;
 using System.Net.Mime;
 
@@ -10,17 +13,27 @@ namespace ServiceDesk.Api.Controllers;
 [Route("[controller]")]
 public class RequestController : ControllerBase
 {
+    private readonly IRequestService _requestService;
+
+    public RequestController(IRequestService requestService)
+    {
+        _requestService = requestService;
+    }
+
     [HttpGet]
     [Produces(MediaTypeNames.Application.Json)]
     [ProducesResponseType(StatusCodes.Status200OK)]
-    public async Task<ActionResult<RequestReadModel>> GetAll(
+    public async Task<ActionResult<PagingModel<RequestReadModel>>> GetAll(
         [FromQuery] int? pageIndex,
         [FromQuery] int? pageSize,
         [FromQuery] string? sort,
         [FromQuery] string dictionaryType
     )
     {
-        return Ok(new());
+        int limit = pageSize ?? 10;
+        int offset = ((pageIndex ?? 1) - 1) * limit;
+
+        return await _requestService.GetAll(limit, offset, sort, dictionaryType);
     }
 
     [HttpGet]
@@ -30,18 +43,19 @@ public class RequestController : ControllerBase
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<ActionResult<RequestReadModel>> GetBy(int id)
     {
-        return Ok(new());
+        return await _requestService.GetBy(id);
     }
 
     [HttpPut]
     [Route("{id}")]
     [Consumes(MediaTypeNames.Application.Json)]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
-    [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public async Task<ActionResult> Update(RequestUpdateModel request)
+    public async Task<ActionResult> Update(int id, RequestChangeModel request)
     {
-        return Ok(new());
+        bool wasUpdated = await _requestService.UpdateAsync(id, request);
+
+        return wasUpdated ? NoContent() : NotFound();
     }
 
     [HttpDelete]
@@ -50,6 +64,20 @@ public class RequestController : ControllerBase
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<ActionResult> Delete(int id)
     {
-        return Ok(new());
+        bool wasDeleted = await _requestService.DeleteAsync(id);
+
+        return wasDeleted ? NoContent() : NotFound();
+    }
+
+    [HttpPatch]
+    [Route("{id}/status")]
+    [Consumes(MediaTypeNames.Application.Json)]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public async Task<ActionResult> UpdateStatus(int id)
+    {
+        bool wasUpdated = await _requestService.UpdateStatusAsync(id);
+
+        return wasUpdated ? NoContent() : NotFound();
     }
 }

@@ -23,7 +23,7 @@
             const res = await getRequestsApi({
                 pageIndex: unref(currentPage),
                 pageSize: unref(pageSize),
-                dictionaryType: 'archive',
+                dictionaryType: 'myRequests',
                 ...unref(searchParams),
                 ...unref(sortParams)
             })
@@ -123,26 +123,6 @@
             }
         },
         {
-            field: 'dateEndRequest',
-            label: t('tableRequests.dateEndRequest'),
-            addForm: {
-                hidden: true
-            },
-            editForm: {
-                hidden: true
-            }
-        },
-        {
-            field: 'userAttached',
-            label: t('tableRequests.userAttached'),
-            addForm: {
-                hidden: true
-            },
-            editForm: {
-                hidden: true
-            }
-        },
-        {
             field: 'createdAt',
             label: t('tableRequests.createdAt'),
             addForm: {
@@ -184,7 +164,7 @@
                                     icon = { useIcon({ icon: 'vi-ep:delete' }) }
                                     onClick = {() => delData(data.row)}
                                 />
-                        </>
+                            </>
                     )
                 }
             }

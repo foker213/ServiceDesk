@@ -77,7 +77,7 @@ public class NewRequestCommandHandler : NewRequestInputHandler, IBotCommandHandl
         string text = $"Ваша заявка успешно создана. Пожалуйста, ожидайте пока вашу заявку примет первый освободившийся специалист.";
 
         await _botClient.SendMessage(
-            chatId,
+            telegramChatId,
             text,
             cancellationToken: ct);
     }
