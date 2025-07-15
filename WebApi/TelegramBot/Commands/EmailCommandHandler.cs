@@ -68,13 +68,13 @@ public class EmailCommandHandler : EmailInputHandler, IBotCommandHandler
         string? fullName = _userStateService.GetUserData(chatId, "FullName");
 
         if (!string.IsNullOrEmpty(fullName))
-            await _externalUserService.Create(new()
+            await _externalUserService.CreateAsync(new()
             {
                 FullName = fullName,
                 Email = email
             });
 
-        ExternalUserCommonRequested userInfo = await _externalUserService.GetByEmail(email);
+        ExternalUserResponse userInfo = await _externalUserService.GetByEmail(email);
 
         if (userInfo is null)
         {
@@ -86,9 +86,9 @@ public class EmailCommandHandler : EmailInputHandler, IBotCommandHandler
             return;
         }
 
-        List<RequestReadModel> requests = await _requestService.GetByExternalUserId(userInfo.UserId);
+        List<RequestResponse> requests = await _requestService.GetByExternalUserId(userInfo.UserId);
 
-        IEnumerable<RequestReadModel> filteredRequests = requests.Where(r => r.Status == Convert.ToString(Status.Solved));
+        IEnumerable<RequestResponse> filteredRequests = requests.Where(r => r.Status == Convert.ToString(Status.Solved));
 
         string text = $"{userInfo.FullName}\n{BotCommands.LIST_OLD_REQUESTS}\n";
 

@@ -1,9 +1,10 @@
-﻿using ServiceDesk.Contracts.Chat;
+﻿using ServiceDesk.Application.IRepository;
+using ServiceDesk.Contracts.Chat;
+using ServiceDesk.Domain.Database.Models;
 
 namespace ServiceDesk.Application.IServices;
 
-public interface IChatService
+public interface IChatService : IService<ChatCommonRequest, ChatResponse, IChatRepository, Chat>
 {
-    Task CreateAsync(ChatInitiated chatInitiated);
     Task<int> GetId(long telegramChatId, bool noTracking = false);
 }

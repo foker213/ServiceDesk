@@ -6,9 +6,8 @@ using Microsoft.EntityFrameworkCore;
 namespace ServiceDesk.Infrastructure.Repository;
 
 internal sealed class ChatRepository(
-    ServiceDeskDbContext db,
-    TimeProvider tp
-) : Repository<Chat>(db, tp), IChatRepository
+    ServiceDeskDbContext db
+) : Repository<Chat>(db), IChatRepository
 {
     public async Task<int> GetId(long telegramChatId, bool noTracking = false)
     {

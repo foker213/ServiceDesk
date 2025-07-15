@@ -1,4 +1,5 @@
 ﻿using Mapster;
+using MapsterMapper;
 using ServiceDesk.Application.IRepository;
 using ServiceDesk.Application.IServices;
 using ServiceDesk.Contracts.ExternalUser;
@@ -6,42 +7,24 @@ using ServiceDesk.Domain.Database.Models;
 
 namespace ServiceDesk.Application.Services;
 
-public class ExternalUserService : IExternalUserService
+public class ExternalUserService(
+    IExternalUserRepository repository,
+    IMapper mapper,
+    TimeProvider tp
+) : Service<ExternalUserCommonRequest, ExternalUserResponse, IExternalUserRepository, ExternalUser>(repository, mapper, tp), 
+    IExternalUserService
 {
-    private readonly IExternalUserRepository _externalUserRepository;
-
-    public ExternalUserService(IExternalUserRepository externalUserRepository)
+    public async Task<ExternalUserResponse> GetByEmail(string email)
     {
-        _externalUserRepository = externalUserRepository;
+        ExternalUser? result = await repository.GetByEmail(email);
+
+        return result.Adapt<ExternalUserResponse>();
     }
 
-    public async Task Create(ExternalUserCommonRequested externalUser) =>
-        await _externalUserRepository.CreateAsync(externalUser.Adapt<ExternalUser>());
-
-    public async Task Update(ExternalUserCommonRequested externalUser) =>
-        await _externalUserRepository.UpdateAsync(externalUser.Adapt<ExternalUser>());
-
-    public async Task Delete(int id) =>
-        await _externalUserRepository.DeleteAsync(id);
-
-    public async Task<List<ExternalUserCommonRequested>> GetAll(int limit = 10, int offset = 0, string? sort = null, bool noTracking = false)
+    public async Task<ExternalUserResponse> GetByPhone(string phone)
     {
-        List<ExternalUser> result = await _externalUserRepository.GetAll(limit, offset, sort);
+        ExternalUser? result = await repository.GetByPhone(phone);
 
-        return result.Adapt<List<ExternalUserCommonRequested>>();
-    }
-
-    public async Task<ExternalUserCommonRequested> GetByEmail(string email)
-    {
-        ExternalUser? result = await _externalUserRepository.GetByEmail(email);
-
-        return result.Adapt<ExternalUserCommonRequested>();
-    }
-
-    public async Task<ExternalUserCommonRequested> GetByPhone(string phone)
-    {
-        ExternalUser? result = await _externalUserRepository.GetByPhone(phone);
-
-        return result.Adapt<ExternalUserCommonRequested>();
+        return result.Adapt<ExternalUserResponse>();
     }
 }

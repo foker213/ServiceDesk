@@ -2,7 +2,7 @@
 
 namespace ServiceDesk.Contracts.User;
 
-public class UserChangeModel
+public class UserCommonRequest
 {
     public required string FirstName { get; set; }
 
@@ -12,6 +12,8 @@ public class UserChangeModel
 
     [EmailAddress]
     public required string Email { get; set; }
+    public string? Login { get; set; }
+    public string? Password { get; set; }
 
     public string? PhoneNumber { get; set; }
 

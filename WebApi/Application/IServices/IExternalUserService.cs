@@ -1,13 +1,11 @@
-﻿using ServiceDesk.Contracts.ExternalUser;
+﻿using ServiceDesk.Application.IRepository;
+using ServiceDesk.Contracts.ExternalUser;
+using ServiceDesk.Domain.Database.Models;
 
 namespace ServiceDesk.Application.IServices;
 
-public interface IExternalUserService
+public interface IExternalUserService : IService<ExternalUserCommonRequest, ExternalUserResponse, IExternalUserRepository, ExternalUser>
 {
-    Task Create(ExternalUserCommonRequested externalUser);
-    Task Update(ExternalUserCommonRequested externalUser);
-    Task Delete(int id);
-    Task<List<ExternalUserCommonRequested>> GetAll(int limit = 10, int offset = 0, string? sort = null, bool noTracking = false);
-    Task<ExternalUserCommonRequested> GetByEmail(string email);
-    Task<ExternalUserCommonRequested> GetByPhone(string phone);
+    Task<ExternalUserResponse> GetByEmail(string email);
+    Task<ExternalUserResponse> GetByPhone(string phone);
 }

@@ -26,7 +26,6 @@ public class BotBackgroundService : BackgroundService
             AllowedUpdates = new[] { UpdateType.Message, UpdateType.CallbackQuery }
         };
 
-        // Scope создается для каждого сообщения
         while (!ct.IsCancellationRequested)
         {
             try

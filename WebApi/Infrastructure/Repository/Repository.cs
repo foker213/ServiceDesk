@@ -9,12 +9,10 @@ namespace ServiceDesk.Infrastructure.Repository;
 public abstract class Repository<T> : IRepository<T> where T : class, IEntity
 {
     protected readonly ServiceDeskDbContext _db;
-    protected readonly TimeProvider _timeProvider;
 
-    public Repository(ServiceDeskDbContext db, TimeProvider timeProvider)
+    public Repository(ServiceDeskDbContext db)
     {
         _db = db;
-        _timeProvider = timeProvider;
     }
 
     protected DbSet<T> DbSet => _db.Set<T>();
@@ -64,12 +62,6 @@ public abstract class Repository<T> : IRepository<T> where T : class, IEntity
         return query;
     }
 
-    public async Task<int> Count()
-    {
-        var query = GetQuery(noTracking: true);
-        return await query.CountAsync();
-    }
-
     public async Task<List<T>> GetAll(int limit = 10, int offset = 0, string? sort = null, bool noTracking = false)
     {
         var query = GetQuery(sort, noTracking);  
@@ -84,21 +76,18 @@ public abstract class Repository<T> : IRepository<T> where T : class, IEntity
 
     public virtual async Task CreateAsync(T entity)
     {
-        entity.CreatedAt = _timeProvider.GetUtcNow().UtcDateTime;
         DbSet.Add(entity);
         await _db.SaveChangesAsync();
     }
 
     public virtual async Task UpdateAsync(T entity)
     {
-        entity.UpdatedAt = _timeProvider.GetUtcNow().UtcDateTime;
         DbSet.Update(entity);
         await _db.SaveChangesAsync();
     }
 
-    public async Task DeleteAsync(int id)
+    public async Task DeleteAsync(int id, T entity)
     {
-        var entity = await GetBy(id) ?? throw new ArgumentNullException(nameof(id));
         DbSet.Remove(entity);
         await _db.SaveChangesAsync();
     }

@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using ServiceDesk.Application.IRepository;
 using ServiceDesk.Domain.Database.Models;
 using ServiceDesk.Infrastructure.Database;
@@ -7,9 +6,8 @@ using ServiceDesk.Infrastructure.Database;
 namespace ServiceDesk.Infrastructure.Repository;
 
 internal sealed class ExternalRepository(
-    ServiceDeskDbContext db,
-    TimeProvider tp
-) : Repository<ExternalUser>(db, tp), IExternalUserRepository
+    ServiceDeskDbContext db
+) : Repository<ExternalUser>(db), IExternalUserRepository
 {
     public async Task<ExternalUser?> GetByEmail(string email)
     {
@@ -30,7 +28,6 @@ internal sealed class ExternalRepository(
         if (query.Any(x => (x.NumberPhone != null && x.NumberPhone == user.NumberPhone) || (x.Email != null && x.Email == user.Email)))
             return;
 
-        user.CreatedAt = _timeProvider.GetUtcNow().UtcDateTime;
         DbSet.Add(user);
         await _db.SaveChangesAsync();
     }

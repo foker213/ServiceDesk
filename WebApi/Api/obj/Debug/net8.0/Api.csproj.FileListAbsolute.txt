@@ -167,7 +167,6 @@ D:\Projects\ServiceDesk\WebApi\Api\obj\Debug\net8.0\Api.GeneratedMSBuildEditorCo
 D:\Projects\ServiceDesk\WebApi\Api\obj\Debug\net8.0\Api.AssemblyInfoInputs.cache
 D:\Projects\ServiceDesk\WebApi\Api\obj\Debug\net8.0\Api.AssemblyInfo.cs
 D:\Projects\ServiceDesk\WebApi\Api\obj\Debug\net8.0\Api.csproj.CoreCompileInputs.cache
-D:\Projects\ServiceDesk\WebApi\Api\obj\Debug\net8.0\Api.MvcApplicationPartsAssemblyInfo.cs
 D:\Projects\ServiceDesk\WebApi\Api\obj\Debug\net8.0\Api.MvcApplicationPartsAssemblyInfo.cache
 D:\Projects\ServiceDesk\WebApi\Api\obj\Debug\net8.0\Api.sourcelink.json
 D:\Projects\ServiceDesk\WebApi\Api\obj\Debug\net8.0\scopedcss\bundle\Api.styles.css

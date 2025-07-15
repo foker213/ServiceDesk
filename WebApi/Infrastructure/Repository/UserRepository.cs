@@ -9,9 +9,8 @@ namespace ServiceDesk.Infrastructure.Repository;
 internal sealed class UserRepository(
     UserManager<User> userManager,
     IUserStore<User> userStore,
-    ServiceDeskDbContext db,
-    TimeProvider tp
-) : Repository<User>(db, tp), IUserRepository
+    ServiceDeskDbContext db
+) : Repository<User>(db), IUserRepository
 {
     public async Task<User?> GetByLogin(string login)
     {
@@ -37,7 +36,6 @@ internal sealed class UserRepository(
         var emailStore = (IUserEmailStore<User>)userStore;
         await userStore.SetUserNameAsync(user, user.UserName, CancellationToken.None);
         await emailStore.SetEmailAsync(user, user.Email, CancellationToken.None);
-        user.CreatedAt = _timeProvider.GetUtcNow().UtcDateTime;
 
         var result = await userManager.CreateAsync(user, password);
         if (result.Succeeded)

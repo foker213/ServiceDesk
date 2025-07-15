@@ -18,16 +18,6 @@
         "IsRequired": false
       },
       {
-        "Name": "twoFactorCode",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "twoFactorRecoveryCode",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
         "Name": "useCookies",
         "Type": "System.Boolean",
         "IsRequired": false
@@ -141,7 +131,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "ServiceDesk.Contracts.PagingModel\u00601[[ServiceDesk.Contracts.Request.RequestReadModel, Contracts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "ServiceDesk.Contracts.PagingModel\u00601[[ServiceDesk.Contracts.Request.RequestResponse, Contracts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "application/json"
         ],
@@ -165,7 +155,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "ServiceDesk.Contracts.Request.RequestReadModel",
+        "Type": "ServiceDesk.Contracts.Request.RequestResponse",
         "MediaTypes": [
           "application/json"
         ],
@@ -195,7 +185,7 @@
       },
       {
         "Name": "request",
-        "Type": "ServiceDesk.Contracts.Request.RequestChangeModel",
+        "Type": "ServiceDesk.Contracts.Request.RequestCommonRequest",
         "IsRequired": true
       }
     ],
@@ -279,9 +269,9 @@
     ]
   },
   {
-    "ContainingType": "ServiceDesk.Api.Controllers.UsersController",
+    "ContainingType": "ServiceDesk.Api.Controllers.UserController",
     "Method": "GetAll",
-    "RelativePath": "Users",
+    "RelativePath": "User",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -304,7 +294,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "ServiceDesk.Contracts.PagingModel\u00601[[ServiceDesk.Contracts.User.UserReadModel, Contracts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "ServiceDesk.Contracts.PagingModel\u00601[[ServiceDesk.Contracts.User.UserResponse, Contracts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "application/json"
         ],
@@ -313,22 +303,22 @@
     ]
   },
   {
-    "ContainingType": "ServiceDesk.Api.Controllers.UsersController",
+    "ContainingType": "ServiceDesk.Api.Controllers.UserController",
     "Method": "Create",
-    "RelativePath": "Users",
+    "RelativePath": "User",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
         "Name": "newUser",
-        "Type": "ServiceDesk.Contracts.User.UserCreateModel",
+        "Type": "ServiceDesk.Contracts.User.UserCommonRequest",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "ServiceDesk.Contracts.User.UserReadModel",
+        "Type": "ServiceDesk.Contracts.User.UserResponse",
         "MediaTypes": [
           "application/json"
         ],
@@ -344,9 +334,9 @@
     ]
   },
   {
-    "ContainingType": "ServiceDesk.Api.Controllers.UsersController",
+    "ContainingType": "ServiceDesk.Api.Controllers.UserController",
     "Method": "GetBy",
-    "RelativePath": "Users/{id}",
+    "RelativePath": "User/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -359,7 +349,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "ServiceDesk.Contracts.User.UserReadModel",
+        "Type": "ServiceDesk.Contracts.User.UserResponse",
         "MediaTypes": [
           "application/json"
         ],
@@ -375,9 +365,9 @@
     ]
   },
   {
-    "ContainingType": "ServiceDesk.Api.Controllers.UsersController",
+    "ContainingType": "ServiceDesk.Api.Controllers.UserController",
     "Method": "Update",
-    "RelativePath": "Users/{id}",
+    "RelativePath": "User/{id}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
@@ -388,8 +378,8 @@
         "IsRequired": true
       },
       {
-        "Name": "user",
-        "Type": "ServiceDesk.Contracts.User.UserChangeModel",
+        "Name": "updatedUser",
+        "Type": "ServiceDesk.Contracts.User.UserCommonRequest",
         "IsRequired": true
       }
     ],
@@ -407,22 +397,13 @@
           "text/json"
         ],
         "StatusCode": 400
-      },
-      {
-        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 404
       }
     ]
   },
   {
-    "ContainingType": "ServiceDesk.Api.Controllers.UsersController",
+    "ContainingType": "ServiceDesk.Api.Controllers.UserController",
     "Method": "Delete",
-    "RelativePath": "Users/{id}",
+    "RelativePath": "User/{id}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,

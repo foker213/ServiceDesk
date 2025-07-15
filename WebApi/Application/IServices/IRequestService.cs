@@ -1,15 +1,13 @@
-﻿using ServiceDesk.Contracts;
+﻿using ServiceDesk.Application.IRepository;
+using ServiceDesk.Contracts;
 using ServiceDesk.Contracts.Request;
+using ServiceDesk.Domain.Database.Models;
 
 namespace ServiceDesk.Application.IServices;
 
-public interface IRequestService
+public interface IRequestService : IService<RequestCommonRequest, RequestResponse, IRequestRepository, Request>
 {
-    Task CreateAsync(RequestCreateModel model);
-    Task<List<RequestReadModel>> GetByExternalUserId(int externalUserId);
-    Task<PagingModel<RequestReadModel>> GetAll(int limit = 10, int offset = 0, string? sort = null, string dictionaryType = "");
-    Task<RequestReadModel> GetBy(int id);
-    Task<bool> DeleteAsync(int id);
-    Task<bool> UpdateAsync(int id, RequestChangeModel request);
-    Task<bool> UpdateStatusAsync(int id);
+    Task<List<RequestResponse>> GetByExternalUserId(int externalUserId);
+    Task<PagingModel<RequestResponse>> GetAll(int? pageSize, int? pageIndex, string? sort, string dictionaryType = "");
+    Task<OperationResult<bool>> UpdateStatusAsync(int id);
 }

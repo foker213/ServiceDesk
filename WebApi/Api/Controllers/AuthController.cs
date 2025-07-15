@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using ServiceDesk.Application.IRepository;
+using ServiceDesk.Application.IServices;
 using ServiceDesk.Domain.Database.Models;
 using ServiceDeskServiceDesk.Contracts.Auth;
 using System.Net.Mime;
@@ -10,7 +10,7 @@ namespace ServiceDesk.Api.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class AuthController(SignInManager<User> signInManager, IUserRepository usersRepository) : ControllerBase
+public class AuthController(SignInManager<User> signInManager, IUserService userService) : ControllerBase
 {
     [HttpPost]
     [Route("Login")]
@@ -21,13 +21,11 @@ public class AuthController(SignInManager<User> signInManager, IUserRepository u
     public async Task<IResult> Login(
         [FromForm] string username,
         [FromForm] string password,
-        [FromForm] string? twoFactorCode,
-        [FromForm] string? twoFactorRecoveryCode,
         [FromQuery] bool useCookies,
         [FromQuery] bool useSessionCookies
     )
     {
-        var user = await usersRepository.GetByLogin(username);
+        var user = await userService.GetByLogin(username);
         if (user != null && user.Blocked)
         {
             var checkPasswordResult = await signInManager.CheckPasswordSignInAsync(user, password, lockoutOnFailure: false);
@@ -48,18 +46,6 @@ public class AuthController(SignInManager<User> signInManager, IUserRepository u
             lockoutOnFailure: false
         );
 
-        if (result.RequiresTwoFactor)
-        {
-            if (!string.IsNullOrEmpty(twoFactorCode))
-            {
-                result = await signInManager.TwoFactorAuthenticatorSignInAsync(twoFactorCode, isPersistent, rememberClient: isPersistent);
-            }
-            else if (!string.IsNullOrEmpty(twoFactorRecoveryCode))
-            {
-                result = await signInManager.TwoFactorRecoveryCodeSignInAsync(twoFactorRecoveryCode);
-            }
-        }
-
         if (!result.Succeeded)
         {
             return TypedResults.Problem("Не верный логин или пароль", statusCode: StatusCodes.Status401Unauthorized);
@@ -75,7 +61,6 @@ public class AuthController(SignInManager<User> signInManager, IUserRepository u
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     public async Task<IResult> Logout()
     {
-        // TODO: Revoke token
         await signInManager.SignOutAsync();
         return Results.Ok();
     }

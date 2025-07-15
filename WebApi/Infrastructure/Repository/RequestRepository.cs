@@ -10,9 +10,8 @@ namespace ServiceDesk.Infrastructure.Repository;
 
 internal sealed class RequestRepository(
     ServiceDeskDbContext db,
-    TimeProvider tp,
     ICurrentUserService userService
-) : Repository<Request>(db, tp), IRequestRepository
+) : Repository<Request>(db), IRequestRepository
 {
     public async Task<PagingModel<Request>> GetAll(int limit = 10, int offset = 0, string? sort = null, string dictionaryType = "")
     {

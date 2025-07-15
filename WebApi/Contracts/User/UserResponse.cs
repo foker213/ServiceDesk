@@ -1,6 +1,6 @@
 ﻿namespace ServiceDesk.Contracts.User;
 
-public class UserReadModel
+public class UserResponse
 {
     public int Id { get; set; }
     public required string FirstName { get; set; }
@@ -11,4 +11,5 @@ public class UserReadModel
     public string? PhoneNumber { get; set; }
     public bool Blocked { get; set; }
     public string? BlockedReason { get; set; }
+    public string? DetailsError { get; set; }
 }

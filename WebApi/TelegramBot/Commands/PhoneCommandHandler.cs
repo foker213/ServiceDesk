@@ -66,13 +66,13 @@ public class PhoneCommandHandler : PhoneInputHandler, IBotCommandHandler
         string? fullName = _userStateService.GetUserData(chatId, "FullName");
 
         if (!string.IsNullOrEmpty(fullName))
-            await _externalUserService.Create(new()
+            await _externalUserService.CreateAsync(new()
             {
                 FullName = fullName,
                 Phone = phone
             });
 
-        ExternalUserCommonRequested? userInfo = await _externalUserService.GetByPhone(phone);
+        ExternalUserResponse? userInfo = await _externalUserService.GetByPhone(phone);
 
         if(userInfo is null)
         {
@@ -84,7 +84,7 @@ public class PhoneCommandHandler : PhoneInputHandler, IBotCommandHandler
             return;
         }
 
-        List<RequestReadModel> requests = await _requestService.GetByExternalUserId(userInfo.UserId);
+        List<RequestResponse> requests = await _requestService.GetByExternalUserId(userInfo.UserId);
 
         string text = $"{userInfo.FullName}\n{BotCommands.LIST_OLD_REQUESTS}\n";
 
