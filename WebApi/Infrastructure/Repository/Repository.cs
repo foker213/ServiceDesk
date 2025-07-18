@@ -62,33 +62,33 @@ public abstract class Repository<T> : IRepository<T> where T : class, IEntity
         return query;
     }
 
-    public async Task<List<T>> GetAll(int limit = 10, int offset = 0, string? sort = null, bool noTracking = false)
+    public async Task<List<T>> GetAll(int limit = 10, int offset = 0, string? sort = null, bool noTracking = false, CancellationToken ct = default)
     {
         var query = GetQuery(sort, noTracking);  
-        return await query.Skip(offset).Take(limit).ToListAsync();
+        return await query.Skip(offset).Take(limit).ToListAsync(ct);
     }
 
-    public virtual async Task<T?> GetBy(int id, bool noTracking = false)
+    public virtual async Task<T?> GetBy(int id, bool noTracking = false, CancellationToken ct = default)
     {
         var query = GetQuery(noTracking: noTracking);
-        return await query.Where(x => x.Id == id).FirstOrDefaultAsync();
+        return await query.Where(x => x.Id == id).FirstOrDefaultAsync(ct);
     }
 
-    public virtual async Task CreateAsync(T entity)
+    public virtual async Task CreateAsync(T entity, CancellationToken ct)
     {
         DbSet.Add(entity);
-        await _db.SaveChangesAsync();
+        await _db.SaveChangesAsync(ct);
     }
 
-    public virtual async Task UpdateAsync(T entity)
+    public virtual async Task UpdateAsync(T entity, CancellationToken ct)
     {
         DbSet.Update(entity);
-        await _db.SaveChangesAsync();
+        await _db.SaveChangesAsync(ct);
     }
 
-    public async Task DeleteAsync(int id, T entity)
+    public async Task DeleteAsync(int id, T entity, CancellationToken ct)
     {
         DbSet.Remove(entity);
-        await _db.SaveChangesAsync();
+        await _db.SaveChangesAsync(ct);
     }
 }

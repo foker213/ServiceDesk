@@ -8,6 +8,7 @@ public static class DependencyInjection
 {
     public static IServiceCollection AddApplication(this IServiceCollection services)
     {
+        // configuration services
         services.AddScoped<IExternalUserService, ExternalUserService>();
         services.AddScoped<IRequestService, RequestService>();
         services.AddScoped<IChatService, ChatService>();

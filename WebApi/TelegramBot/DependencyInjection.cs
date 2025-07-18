@@ -35,6 +35,7 @@ public static class DependencyInjection
         return services;
     }
 
+    // configuration commands handler
     private static void AddCommandHandlers(IServiceCollection services)
     {
         services.AddTransient<StartCommandHandler>();
@@ -54,6 +55,7 @@ public static class DependencyInjection
         services.AddTransient<IBotCommandHandler, UnknownCommandHandler>();
     }
 
+    //configuration inputs handler
     private static void AddInputHandlers(IServiceCollection services)
     {
         services.AddTransient<IInputDataHandler, StartCommandHandler>();

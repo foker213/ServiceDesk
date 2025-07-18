@@ -15,7 +15,7 @@ public class UserService(
 ) : Service<UserCommonRequest, UserResponse, IUserRepository, User>(repository, mapper, tp),
     IUserService
 {
-    public async override Task<OperationResult<UserResponse>> CreateAsync(UserCommonRequest request)
+    public async override Task<OperationResult<UserResponse>> CreateAsync(UserCommonRequest request, CancellationToken ct)
     {
         User? existUser = await repository.GetByLoginOrEmail(
             login: request.Login!,
@@ -52,9 +52,12 @@ public class UserService(
 
         User? createdUser = await repository.GetBy(user.Id)!;
 
-        return createdUser.Adapt<OperationResult<UserResponse>>();
+        return new()
+        {
+            Value = createdUser.Adapt<UserResponse>()
+        };
     }
 
-    public async Task<User?> GetByLogin(string userName) =>
+    public async Task<User?> GetByLogin(string userName, CancellationToken ct) =>
         await repository.GetByLogin(userName);
 }

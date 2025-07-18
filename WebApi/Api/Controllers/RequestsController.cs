@@ -12,7 +12,7 @@ namespace ServiceDesk.Api.Controllers;
 [Authorize]
 [ApiController]
 [Route("[controller]")]
-public class RequestController(IRequestService requestService) : ControllerBase
+public class RequestsController(IRequestService requestService) : ControllerBase
 {
 
     [HttpGet]
@@ -22,7 +22,8 @@ public class RequestController(IRequestService requestService) : ControllerBase
         [FromQuery] int? pageIndex,
         [FromQuery] int? pageSize,
         [FromQuery] string? sort,
-        [FromQuery] string dictionaryType
+        [FromQuery] string dictionaryType,
+        CancellationToken ct
     )
     {
         return await requestService.GetAll(pageSize, pageIndex, sort, dictionaryType);
@@ -33,7 +34,7 @@ public class RequestController(IRequestService requestService) : ControllerBase
     [Produces(MediaTypeNames.Application.Json)]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public async Task<ActionResult<RequestResponse>> GetBy(int id)
+    public async Task<ActionResult<RequestResponse>> GetBy(int id, CancellationToken ct)
     {
         OperationResult<RequestResponse> result = await requestService.GetBy(id);
 
@@ -53,7 +54,7 @@ public class RequestController(IRequestService requestService) : ControllerBase
     [Consumes(MediaTypeNames.Application.Json)]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public async Task<ActionResult> Update(int id, RequestCommonRequest request)
+    public async Task<ActionResult> Update(int id, RequestCommonRequest request, CancellationToken ct)
     {
         OperationResult<bool> result = await requestService.UpdateAsync(id, request);
 
@@ -69,7 +70,7 @@ public class RequestController(IRequestService requestService) : ControllerBase
     [Route("{id}")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public async Task<ActionResult> Delete(int id)
+    public async Task<ActionResult> Delete(int id, CancellationToken ct)
     {
         OperationResult<bool> result = await requestService.DeleteAsync(id);
 
@@ -86,7 +87,7 @@ public class RequestController(IRequestService requestService) : ControllerBase
     [Consumes(MediaTypeNames.Application.Json)]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public async Task<ActionResult> UpdateStatus(int id)
+    public async Task<ActionResult> UpdateStatus(int id, CancellationToken ct)
     {
         OperationResult<bool> result = await requestService.UpdateStatusAsync(id);
 

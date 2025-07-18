@@ -6,6 +6,6 @@ namespace ServiceDesk.Application.IServices;
 
 public interface IExternalUserService : IService<ExternalUserCommonRequest, ExternalUserResponse, IExternalUserRepository, ExternalUser>
 {
-    Task<ExternalUserResponse> GetByEmail(string email);
-    Task<ExternalUserResponse> GetByPhone(string phone);
+    Task<ExternalUserResponse> GetByEmail(string email, CancellationToken ct);
+    Task<ExternalUserResponse> GetByPhone(string phone, CancellationToken ct);
 }

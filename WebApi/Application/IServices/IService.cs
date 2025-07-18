@@ -10,9 +10,9 @@ public interface IService<TRequest, TResponse, TRepository, TEntity>
     where TRepository : IRepository<TEntity>
     where TEntity : class, IEntity
 {
-    Task<PagingModel<TResponse>> GetAll(int? pageSize, int? pageIndex, string? sort);
-    Task<OperationResult<TResponse>> GetBy(int id);
-    Task<OperationResult<TResponse>> CreateAsync(TRequest request);
-    Task<OperationResult<bool>> UpdateAsync(int id, TRequest request);
-    Task<OperationResult<bool>> DeleteAsync(int id);
+    Task<PagingModel<TResponse>> GetAll(int? pageSize, int? pageIndex, string? sort, CancellationToken ct);
+    Task<OperationResult<TResponse>> GetBy(int id, CancellationToken ct);
+    Task<OperationResult<TResponse>> CreateAsync(TRequest request, CancellationToken ct);
+    Task<OperationResult<bool>> UpdateAsync(int id, TRequest request, CancellationToken ct);
+    Task<OperationResult<bool>> DeleteAsync(int id, CancellationToken ct);
 }

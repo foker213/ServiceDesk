@@ -22,6 +22,7 @@ public static class DependencyInjection
             .AddEntityFrameworkStores<ServiceDeskDbContext>()
             .AddDefaultTokenProviders();
 
+        // configuration repositories
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<IChatRepository, ChatRepository>();
         services.AddScoped<IChatLineRepository, ChatLineRepository>();

@@ -13,11 +13,11 @@ internal sealed class RequestRepository(
     ICurrentUserService userService
 ) : Repository<Request>(db), IRequestRepository
 {
-    public async Task<PagingModel<Request>> GetAll(int limit = 10, int offset = 0, string? sort = null, string dictionaryType = "")
+    public async Task<PagingModel<Request>> GetAll(int limit = 10, int offset = 0, string? sort = null, string dictionaryType = "", CancellationToken ct = default)
     {
         int userId = userService.UserId;
         var query = GetQueryFactory(dictionaryType, userId)(sort);
-        List<Request> result = await query.Skip(offset).Take(limit).ToListAsync();
+        List<Request> result = await query.Skip(offset).Take(limit).ToListAsync(ct);
 
         return new(result.Count(), result);
     }
@@ -51,9 +51,9 @@ internal sealed class RequestRepository(
         return query.Where(x => x.Status == Status.NotAssigned);
     }
 
-    public async Task<List<Request>> GetByExternalUserId(int externalUserId)
+    public async Task<List<Request>> GetByExternalUserId(int externalUserId, CancellationToken ct)
     {
         var query = GetQuery();
-        return await query.Where(x => x.Chat!.ExternalUserId == externalUserId).ToListAsync();
+        return await query.Where(x => x.Chat!.ExternalUserId == externalUserId).ToListAsync(ct);
     }
 }

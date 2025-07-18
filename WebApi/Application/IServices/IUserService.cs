@@ -6,5 +6,5 @@ namespace ServiceDesk.Application.IServices;
 
 public interface IUserService : IService<UserCommonRequest, UserResponse, IUserRepository, User>
 {
-    Task<User?> GetByLogin(string userName);
+    Task<User?> GetByLogin(string userName, CancellationToken ct);
 }

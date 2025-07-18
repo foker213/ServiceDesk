@@ -10,8 +10,9 @@ public class ChatService(
     IChatRepository repository,
     IMapper mapper,
     TimeProvider tp
-) : Service<ChatCommonRequest, ChatResponse, IChatRepository, Chat>(repository, mapper, tp), IChatService
+) : Service<ChatCommonRequest, ChatResponse, IChatRepository, Chat>(repository, mapper, tp), 
+    IChatService
 {
-    public async Task<int> GetId(long telegramChatId, bool noTracking = false) =>
+    public async Task<int> GetId(long telegramChatId, bool noTracking, CancellationToken ct) =>
         await repository.GetId(telegramChatId, noTracking);
 }

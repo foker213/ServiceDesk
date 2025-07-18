@@ -9,19 +9,19 @@ internal sealed class ExternalRepository(
     ServiceDeskDbContext db
 ) : Repository<ExternalUser>(db), IExternalUserRepository
 {
-    public async Task<ExternalUser?> GetByEmail(string email)
+    public async Task<ExternalUser?> GetByEmail(string email, CancellationToken ct)
     {
         IQueryable<ExternalUser> query = GetQuery();
-        return await query.Where(x => x.Email == email).FirstOrDefaultAsync();
+        return await query.Where(x => x.Email == email).FirstOrDefaultAsync(ct);
     }
 
-    public async Task<ExternalUser?> GetByPhone(string number)
+    public async Task<ExternalUser?> GetByPhone(string number, CancellationToken ct)
     {
         IQueryable<ExternalUser> query = GetQuery();
-        return await query.Where(x => x.NumberPhone == number).FirstOrDefaultAsync();
+        return await query.Where(x => x.NumberPhone == number).FirstOrDefaultAsync(ct);
     }
 
-    public override async Task CreateAsync(ExternalUser user)
+    public override async Task CreateAsync(ExternalUser user, CancellationToken ct)
     {
         IQueryable<ExternalUser> query = GetQuery();
 
@@ -29,6 +29,6 @@ internal sealed class ExternalRepository(
             return;
 
         DbSet.Add(user);
-        await _db.SaveChangesAsync();
+        await _db.SaveChangesAsync(ct);
     }
 }

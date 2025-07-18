@@ -12,30 +12,30 @@ internal sealed class UserRepository(
     ServiceDeskDbContext db
 ) : Repository<User>(db), IUserRepository
 {
-    public async Task<User?> GetByLogin(string login)
+    public async Task<User?> GetByLogin(string login, CancellationToken ct)
     {
         var query = GetQuery();
-        return await query.Where(x => x.UserName == login).FirstOrDefaultAsync();
+        return await query.Where(x => x.UserName == login).FirstOrDefaultAsync(ct);
     }
 
-    public async Task<User?> GetByEmail(string email)
+    public async Task<User?> GetByEmail(string email, CancellationToken ct)
     {
         var query = GetQuery();
-        return await query.Where(x => x.Email == email).FirstOrDefaultAsync();
+        return await query.Where(x => x.Email == email).FirstOrDefaultAsync(ct);
     }
 
-    public async Task<User?> GetByLoginOrEmail(string login, string email)
+    public async Task<User?> GetByLoginOrEmail(string login, string email, CancellationToken ct)
     {
         var query = GetQuery();
         return await query.Where(x => x.UserName == login || x.Email == email)
-            .FirstOrDefaultAsync();
+            .FirstOrDefaultAsync(ct);
     }
 
-    public async Task Create(User user, string password)
+    public async Task Create(User user, string password, CancellationToken ct)
     {
         var emailStore = (IUserEmailStore<User>)userStore;
-        await userStore.SetUserNameAsync(user, user.UserName, CancellationToken.None);
-        await emailStore.SetEmailAsync(user, user.Email, CancellationToken.None);
+        await userStore.SetUserNameAsync(user, user.UserName, ct);
+        await emailStore.SetEmailAsync(user, user.Email, ct);
 
         var result = await userManager.CreateAsync(user, password);
         if (result.Succeeded)

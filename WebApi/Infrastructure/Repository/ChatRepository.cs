@@ -9,10 +9,10 @@ internal sealed class ChatRepository(
     ServiceDeskDbContext db
 ) : Repository<Chat>(db), IChatRepository
 {
-    public async Task<int> GetId(long telegramChatId, bool noTracking = false)
+    public async Task<int> GetId(long telegramChatId, bool noTracking = false, CancellationToken ct = default)
     {
         var query = GetQuery(noTracking: noTracking);
-        var result = await query.Where(x => x.TelegramChatId == telegramChatId).FirstOrDefaultAsync();
+        var result = await query.Where(x => x.TelegramChatId == telegramChatId).FirstOrDefaultAsync(ct);
 
         return result?.Id ?? throw new Exception($"Объект с TelegramChatId {telegramChatId} не найден");
     }

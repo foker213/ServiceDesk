@@ -32,7 +32,8 @@ public abstract class Service<TRequest, TResponse, TRepository, TEntity>
     public virtual async Task<PagingModel<TResponse>> GetAll(
         int? pageSize,
         int? pageIndex,
-        string? sort)
+        string? sort, 
+        CancellationToken ct)
     {
         int limit = pageSize ?? 10;
         int offset = ((pageIndex ?? 1) - 1) * limit;
@@ -42,7 +43,7 @@ public abstract class Service<TRequest, TResponse, TRepository, TEntity>
         return new(entities.Count(), entities.Adapt<List<TResponse>>());
     }
 
-    public virtual async Task<OperationResult<TResponse>> GetBy(int id)
+    public virtual async Task<OperationResult<TResponse>> GetBy(int id, CancellationToken ct)
     {
         TEntity? entity = await _repository.GetBy(id);
 
@@ -58,7 +59,7 @@ public abstract class Service<TRequest, TResponse, TRepository, TEntity>
         };
     }
 
-    public virtual async Task<OperationResult<TResponse>> CreateAsync(TRequest request)
+    public virtual async Task<OperationResult<TResponse>> CreateAsync(TRequest request, CancellationToken ct)
     {
         TEntity? entity = request.Adapt<TEntity>();
         entity.CreatedAt = _timeProvider.GetUtcNow().UtcDateTime;
@@ -68,7 +69,7 @@ public abstract class Service<TRequest, TResponse, TRepository, TEntity>
         return new();
     }
 
-    public virtual async Task<OperationResult<bool>> UpdateAsync(int id, TRequest request)
+    public virtual async Task<OperationResult<bool>> UpdateAsync(int id, TRequest request, CancellationToken ct)
     {
         TEntity? existEntity = await _repository.GetBy(id);
         if (existEntity is null)
@@ -86,7 +87,7 @@ public abstract class Service<TRequest, TResponse, TRepository, TEntity>
         return new();
     }
 
-    public virtual async Task<OperationResult<bool>> DeleteAsync(int id)
+    public virtual async Task<OperationResult<bool>> DeleteAsync(int id, CancellationToken ct)
     {
         TEntity? existEntity = await _repository.GetBy(id);
         if (existEntity is null)

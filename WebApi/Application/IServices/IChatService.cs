@@ -6,5 +6,5 @@ namespace ServiceDesk.Application.IServices;
 
 public interface IChatService : IService<ChatCommonRequest, ChatResponse, IChatRepository, Chat>
 {
-    Task<int> GetId(long telegramChatId, bool noTracking = false);
+    Task<int> GetId(long telegramChatId, bool noTracking, CancellationToken ct);
 }

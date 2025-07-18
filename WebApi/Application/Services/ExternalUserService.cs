@@ -14,14 +14,14 @@ public class ExternalUserService(
 ) : Service<ExternalUserCommonRequest, ExternalUserResponse, IExternalUserRepository, ExternalUser>(repository, mapper, tp), 
     IExternalUserService
 {
-    public async Task<ExternalUserResponse> GetByEmail(string email)
+    public async Task<ExternalUserResponse> GetByEmail(string email, CancellationToken ct)
     {
         ExternalUser? result = await repository.GetByEmail(email);
 
         return result.Adapt<ExternalUserResponse>();
     }
 
-    public async Task<ExternalUserResponse> GetByPhone(string phone)
+    public async Task<ExternalUserResponse> GetByPhone(string phone, CancellationToken ct)
     {
         ExternalUser? result = await repository.GetByPhone(phone);
 

@@ -19,7 +19,7 @@ public class RequestService(
 {
     private readonly ICurrentUserService _userService = userService;
 
-    public async Task<PagingModel<RequestResponse>> GetAll(int? pageSize, int? pageIndex, string? sort = null, string dictionaryType = "")
+    public async Task<PagingModel<RequestResponse>> GetAll(int? pageSize, int? pageIndex, string? sort = null, string dictionaryType, CancellationToken ct)
     {
         int limit = pageSize ?? 10;
         int offset = ((pageIndex ?? 1) - 1) * limit;
@@ -29,14 +29,14 @@ public class RequestService(
         return result.Adapt<PagingModel<RequestResponse>>();
     }
 
-    public async Task<List<RequestResponse>> GetByExternalUserId(int externalUserId)
+    public async Task<List<RequestResponse>> GetByExternalUserId(int externalUserId, CancellationToken ct)
     {
         List<Request> result = await repository.GetByExternalUserId(externalUserId);
 
         return result.Adapt<List<RequestResponse>>();
     }
 
-    public async Task<OperationResult<bool>> UpdateStatusAsync(int id)
+    public async Task<OperationResult<bool>> UpdateStatusAsync(int id, CancellationToken ct)
     {
         var existRequest = await repository.GetBy(id);
         if (existRequest == null)
